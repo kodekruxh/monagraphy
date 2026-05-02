@@ -2198,8 +2198,9 @@ blockquote {
 }
 
 .coming-soon h1 {
-    font-size: 64px;
-    margin: 50px;
+    font-size: 4.5rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .coming-soon p {
