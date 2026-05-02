@@ -2239,11 +2239,12 @@ blockquote {
 .hero_image {
     height: 100vh;
     align-content: center;
-    margin-top: calc(-80px);
+    margin-top: calc(-160px);
     background: url(images/main_image.png);
+    background-attachment: fixed;
+    background-size: cover;
     object-position: center;
-    object-fit: cover;
-    width: 100%;
+    background-repeat: no-repeat;
 }
 
 .navbar {
