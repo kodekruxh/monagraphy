@@ -2237,9 +2237,10 @@ blockquote {
 }
 
 .hero_image {
-    height: 100vh;
-    align-content: center;
-    margin-top: calc(-160px);
+  position: relative;
+  height: 100vh;
+  margin-top: calc(-160px);
+  overflow: hidden;
 }
 
 .image-container {
@@ -2250,14 +2251,17 @@ blockquote {
 }
 
 .background-zoom {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-image: url(images/main_image.png);
-  background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  animation: zoomInLoop 6s ease-in-out infinite;
+  animation: zoomInLoop 12s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 @keyframes zoomInLoop {
@@ -2265,7 +2269,7 @@ blockquote {
     transform: scale(1);
   }
   100% {
-    transform: scale(1.8);
+    transform: scale(1.2);
   }
 }
 
