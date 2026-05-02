@@ -2209,8 +2209,8 @@ blockquote {
 
 /* Progress Bar */
 .progress-container {
-    width: 400px;
-    height: 12px;
+    width: 300px;
+    height: 15px;
     background: #222;
     overflow: hidden;
     margin: 0 auto;
@@ -2225,6 +2225,14 @@ blockquote {
     display: block;
     margin-top: 10px;
     color: #000;
+}
+
+/* push MAGAZINE to next line on small screens */
+@media (max-width: 600px) {
+    .brand-text span:last-child {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .hero_image {
