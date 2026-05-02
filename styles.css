@@ -2245,6 +2245,16 @@ blockquote {
     background-size: cover;
     object-position: center;
     background-repeat: no-repeat;
+    animation: zoomInLoop 10s ease-in-out infinite;
+}
+
+@keyframes zoomInLoop {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.8);
+  }
 }
 
 .hero_content {
@@ -2256,7 +2266,6 @@ blockquote {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* push MAGAZINE to next line on small screens */
 @media (max-width: 600px) {
     .hero_image {
         margin-top: calc(-80px);
