@@ -2197,7 +2197,7 @@ blockquote {
     height: 100vh;
     align-content: center;
     margin-top: calc(-80px);
-    background: url(images/main-image.jpeg);
+    background: url(images/main-image.png);
     object-position: center;
     object-fit: cover;
     width: 100%;
