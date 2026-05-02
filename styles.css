@@ -2249,13 +2249,12 @@ blockquote {
 
 .hero_content {
   padding: 20px;
-  background: url(https://assets-global.website-files.com/6486d42bb615abb2a49e3a01/64871dab0fed4e3e4dfbc952_background.jpg);
-  background: rgba(255, 255, 255, 0.2); /* White with 20% opacity */
-  backdrop-filter: blur(10px);          /* Blurs the content behind the element */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white border */
-  border-radius: 15px;                 /* Rounded corners */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* push MAGAZINE to next line on small screens */
