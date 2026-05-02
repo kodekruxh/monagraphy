@@ -2193,6 +2193,16 @@ blockquote {
   display: flex;
 }
 
+.hero_image {
+    height: 100vh;
+    align-content: center;
+    margin-top: calc(-80px);
+    background: url(images/main-image.jpeg);
+    object-position: center;
+    object-fit: cover;
+    width: 100%;
+}
+
 .navbar {
   background-color: rgba(0, 0, 0, 0);
   justify-content: center;
