@@ -1141,24 +1141,12 @@
             });
         
             // 4. Initialize Turn.js AFTER the modal is visible
-            setTimeout(function() {
-                $("#book").turn({
-                    width: 800,
-                    height: 500,
-                    autoCenter: true,
-                    display: 'double', // Forces the 2-page spread
-                    acceleration: true,
-                    when: {
-                        turning: function(event, page, view) {
-                            console.log("Turning to page: " + page);
-                        }
-                    }
-                });
-                
-                // Force a jump to page 1 to "wake up" the engine
-                $("#book").turn("page", 1);
-            }, 100); // 100ms delay is usually enough for the browser to render the flexbox
-          });
+            $("#book").turn({
+                width: 800,
+                height: 500,
+                autoCenter: true,
+            });
+
         
           // Close functionality
           function closeModal() {
