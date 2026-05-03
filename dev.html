@@ -1002,19 +1002,27 @@
 
 		<!-- Preloader Overlay -->
 		<div id="preloader">
-		    <div class="preloader-content">
-		        <a href="/index" class="brand toip w-nav-brand" style="text-decoration: none; color: white;">
-		            <span style="display: flex; align-items: center; justify-content: center;">
-		                <span style="margin-bottom: 5px;">[</span>
-		                <span>MONA</span>
-		                <span style="margin-bottom: 5px;">]</span>
-		                <span style="color: #606060; margin-right: 15px;">GRAPHY</span>
-		                
-		                <!-- This part swaps -->
-		                <span id="word-flipper" style="display: inline-block; min-width: 120px; text-align: left;">MAGAZINE</span>
-		            </span>
-		        </a>
-		    </div>
+			<div class="preloader-content">
+				<a href="/index" class="brand toip w-nav-brand" style="text-decoration: none; color: white; display: flex; align-items: center;">
+					<span style="display: flex; align-items: center;">
+						<span style="margin-bottom: 5px;">[</span>
+						<span>MONA</span>
+						<span style="margin-bottom: 5px;">]</span>
+						<span style="color: #606060; margin-right: 15px;">GRAPHY</span>
+					</span>
+		
+					<!-- The Rolling Window -->
+					<div class="word-frame">
+						<div id="word-list">
+							<div>MAGAZINE</div>
+							<div>VISION</div>
+							<div>ART</div>
+							<div>CULTURE</div>
+							<div>MAGAZINE</div> <!-- End with your actual name -->
+						</div>
+					</div>
+				</a>
+			</div>
 		</div>
 
 
@@ -1051,33 +1059,34 @@
 
 
 		$(document).ready(function() {
-			const words = ["MAGAZINE", "VISION", "ART", "CULTURE", "PORTRAITURE"];
-			let i = 0;
-			const $flipper = $("#word-flipper");
-			// 1. Function to cycle the words
-			const wordInterval = setInterval(function() {
-				if (i < words.length - 1) {
-					i++;
-					// Apply a quick fade out/in effect
-					$flipper.fadeOut(100, function() {
-						$(this).text(words[i]).fadeIn(100).addClass('word-change');
-					});
-				} else {
-					clearInterval(wordInterval);
-				}
-			}, 500); // Adjust speed of word switching here (ms)
-			// 2. Lift the curtain when the whole page is ready
-			$(window).on('load', function() {
-				// Delay slightly so the user sees the final logo word
-				setTimeout(function() {
-					$("#preloader").addClass("slide-up");
-					
-					// Clean up the DOM after animation finishes
-					setTimeout(function() {
-						$("#preloader").remove();
-					}, 2000);
-				}, 1200);
-			});
+		    const $wordList = $("#word-list");
+		    const wordsCount = $("#word-list div").length;
+		    const lineHeight = 1.2; // Should match the CSS height (em)
+		    let currentIndex = 0;
+		
+		    // 1. Rolling Animation
+		    const rollingInterval = setInterval(function() {
+		        if (currentIndex < wordsCount - 1) {
+		            currentIndex++;
+		            // Move the list up by one line height each time
+		            $wordList.css("transform", "translateY(-" + (currentIndex * lineHeight) + "em)");
+		        } else {
+		            clearInterval(rollingInterval);
+		        }
+		    }, 500); // Adjust timing of the roll here
+		
+		    // 2. Curtain Lift
+		    $(window).on('load', function() {
+		        // Wait a beat after the last word hits
+		        setTimeout(function() {
+		            $("#preloader").addClass("slide-up-curtain");
+		            
+		            // Garbage collection
+		            setTimeout(function() {
+		                $("#preloader").remove();
+		            }, 1600);
+		        }, 1500); 
+		    });
 		});
 		</script>
 
