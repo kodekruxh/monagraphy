@@ -2293,6 +2293,45 @@ blockquote {
     }
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+}
+
+.modal-content {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 10px;
+}
+
+#close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#book {
+  width: 100%;
+  height: 100%;
+}
+
+#book img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .navbar {
   background-color: rgba(0, 0, 0, 0);
   justify-content: center;
