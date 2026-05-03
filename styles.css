@@ -2349,6 +2349,10 @@ blockquote {
   -webkit-user-drag: none !important;
 }
 
+.turn-page-wrapper {
+    cursor: pointer !important;
+}
+
 .navbar {
   background-color: rgba(0, 0, 0, 0);
   justify-content: center;
