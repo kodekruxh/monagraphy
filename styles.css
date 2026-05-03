@@ -2299,7 +2299,7 @@ blockquote {
 
 /* Animation for the words */
 .word-change {
-    animation: flipIn 0.3s ease forwards;
+    animation: flipIn 0.5s ease forwards;
 }
 
 @keyframes flipIn {
