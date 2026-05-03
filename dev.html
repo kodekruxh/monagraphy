@@ -37,33 +37,33 @@
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
-		    z-index: 999999; /* Extra high to be safe */
-		    transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
-		    will-change: transform; /* Tells the browser to be ready to move */
+		    z-index: 9999;
+		    transition: transform 1.5s cubic-bezier(0.85, 0, 0.15, 1);
 		}
 		
+		.slide-up-curtain {
+		    transform: translateY(-100%);
+		}
+		
+		/* The "Window" through which you see one word at a time */
 		.word-frame {
-		    height: 1.2em;
+		    height: 1.2em; /* Height of one line */
 		    overflow: hidden;
+		    position: relative;
+		    display: inline-block;
+		    text-align: left;
+		}
+		
+		/* The vertical strip of words */
+		#word-list {
+		    position: relative;
+		    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Smooth sliding */
+		}
+		
+		#word-list div {
+		    height: 1.2em; /* Must match the frame height */
 		    line-height: 1.2em;
-		}
-		
-		.word-list-loop {
-		    /* We use a faster time (1.5s) and linear to ensure it starts moving immediately */
-		    animation: roll 2s infinite ease-in-out;
-		}
-		
-		@keyframes roll {
-		    0% { transform: translateY(0); }
-		    20% { transform: translateY(-1.2em); }
-		    40% { transform: translateY(-2.4em); }
-		    60% { transform: translateY(-3.6em); }
-		    80% { transform: translateY(-4.8em); }
-		    100% { transform: translateY(-4.8em); }
-		}
-		
-		.preloader-hidden {
-		    transform: translateY(-100%) !important;
+		    white-space: nowrap;
 		}
 		</style>
         
