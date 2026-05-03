@@ -2237,6 +2237,8 @@ blockquote {
 }
 
 .hero_image {
+  display: flex;
+  align-items: center;
   position: relative;
   height: 100vh;
   margin-top: calc(-160px);
