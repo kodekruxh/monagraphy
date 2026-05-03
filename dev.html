@@ -1102,71 +1102,71 @@
         <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js@master/turn.min.js"></script>
 
         <script>
-        $(window).on("load", function(){
+        $(window).on("load", function() {
+            const books = {
+                1: [
+                    "images/cover-68.jpg",
+                    "images/68.jpg",
+                    "images/69.jpg",
+                    "images/70.jpg",
+                    "images/71.jpg",
+                    "images/72.jpg"
+                ]
+            };
         
-          const books = {
-            1: [
-              "images/cover-68.jpg",
-              "images/68.jpg",
-              "images/69.jpg",
-              "images/70.jpg",
-              "images/71.jpg",
-              "images/72.jpg"
-            ]
-          };
+            $(".openBook").on("click", function() {
+                let bookId = $(this).data("book");
+                let pages = books[bookId];
+                if (!pages) return;
         
-          $(".openBook").on("click", function(){
-            let bookId = $(this).data("book");
-            let pages = books[bookId];
+                const $book = $("#book");
         
-            if (!pages) return;
+                // 1. Show modal first so dimensions exist
+                $("#modal").addClass("show");
         
-            // 1. Clear and Show Modal first
-            $("#book").html(""); 
-            $("#modal").addClass("show");
+                // 2. Clear and rebuild
+                if ($book.data("turn")) {
+                    $book.turn("destroy");
+                }
+                $book.html("");
         
-            // 2. Build the pages
-            // Note: Removed the manual empty div. 
-            // If you want a specific "blank" page inside, add it to your array.
-            pages.forEach(src => {
-              $("#book").append(`<div><img src="${src}" style="width:100%; height:100%;"></div>`);
+                // 3. Add pages
+                pages.forEach(src => {
+                    $book.append(`<div class="page"><img src="${src}"></div>`);
+                });
+        
+                // 4. Slight delay to let the DOM settle, then init
+                setTimeout(function() {
+                    $book.turn({
+                        width: 800,
+                        height: 500,
+                        autoCenter: true,
+                        display: 'double', // Shows two pages at once
+                        acceleration: true,
+                        gradients: true,
+                        elevation: 50,
+                        when: {
+                            missing: function (event, pages) {
+                                // Helpful for debugging
+                                console.log("Pages missing:", pages);
+                            }
+                        }
+                    });
+                }, 150); // Increased delay for safety
             });
         
-            // 3. Initialize Turn.js
-            // We use a slightly longer timeout or requestAnimationFrame to ensure the modal is painted
-            setTimeout(function(){
-              if ($("#book").data("turn")) {
-                  $("#book").turn("destroy").element.html(""); // Clean slate
-              }
-        
-              $("#book").turn({
-                width: 800,
-                height: 500,
-                autoCenter: true,
-                acceleration: true, // Smoother on mobile
-                gradients: true,
-                elevation: 50,
-                when: {
-                    turned: function(e, page) {
-                        console.log('Current page: ', page);
-                    }
+            // Close logic
+            function closeModal() {
+                $("#modal").removeClass("show");
+                if ($("#book").data("turn")) {
+                    $("#book").turn("destroy");
                 }
-              });
-            }, 100); 
-          });
-        
-          function closeModal(){
-            $("#modal").removeClass("show");
-            if ($("#book").data("turn")) {
-              $("#book").turn("destroy");
-              $("#book").html(""); // Empty it out
             }
-          }
         
-          $("#close").on("click", closeModal);
-          $("#modal").on("click", function(e){
-            if (e.target.id === "modal") closeModal();
-          });
+            $("#close").on("click", closeModal);
+            $("#modal").on("click", function(e) {
+                if (e.target.id === "modal") closeModal();
+            });
         });
         </script>
 
