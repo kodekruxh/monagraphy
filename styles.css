@@ -2193,6 +2193,18 @@ blockquote {
   display: flex;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 .coming-soon {
     text-align: center;
 }
@@ -2235,6 +2247,15 @@ blockquote {
         text-align: center;
     }
 }
+
+
+
+
+
+
+
+
+
 
 .hero_image {
   display: flex;
@@ -2293,110 +2314,6 @@ blockquote {
     }
 }
 
-/* ============================================================
-   1. MODAL & OVERLAY 
-   ============================================================ */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  z-index: 999999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.95); /* Deep dark background */
-  
-  /* Flex centering */
-  align-items: center;
-  justify-content: center;
-}
-
-.modal.show {
-  display: flex; /* Triggered by JS */
-}
-
-.modal-content {
-  width: 800px;
-  height: 500px;
-  position: relative;
-  background: transparent; /* Let the book stand on its own */
-  
-  /* CRITICAL: Turn.js creates "peels" that move outside the box. 
-     If this is hidden, you won't see the corner curl! */
-  overflow: visible !important; 
-}
-
-/* ============================================================
-   2. THE CLOSE BUTTON
-   ============================================================ */
-#close {
-  position: absolute;
-  top: -50px; /* Positioned above the book */
-  right: -10px;
-  font-size: 45px;
-  color: #ffffff;
-  cursor: pointer;
-  z-index: 1000;
-  transition: opacity 0.2s;
-}
-
-#close:hover {
-  opacity: 0.7;
-}
-
-/* ============================================================
-   3. TURN.JS BOOK ENGINE
-   ============================================================ */
-#book {
-  width: 800px;
-  height: 500px;
-  margin: 0 auto;
-  /* Required for the "gradients" and shadows to render correctly */
-  overflow: visible !important; 
-}
-
-/* Logic for individual pages injected by Turn.js */
-.turn-page {
-  background-color: #ffffff;
-  background-size: 100% 100% !important; /* Forces image to fit page exactly */
-  background-repeat: no-repeat;
-  background-position: center;
-  
-  /* Optional: gives the pages a slight paper-like shadow */
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-/* Logic for "Hard" (Cover) pages */
-.hard {
-  background-color: #f0f0f0;
-  font-weight: bold;
-}
-
-/* ============================================================
-   4. INTERACTION FIXES (THE "CURL" FIX)
-   ============================================================ */
-
-/* If you use <img> tags inside divs instead of backgrounds, 
-   this prevents them from blocking the turn engine */
-#book img {
-  pointer-events: none !important;
-  user-select: none !important;
-  -webkit-user-drag: none !important;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Force the cursor to change when hovering over the "turnable" area */
-.turn-page-wrapper {
-  cursor: pointer !important;
-}
-
-/* Prevents accidental text selection while flipping pages */
-body.modal-open {
-  overflow: hidden;
-  user-select: none;
-}
 
 
 
@@ -2408,154 +2325,6 @@ body.modal-open {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.sample-magazine2 #book-wrapper{
-	width:924px;
-	margin:0 38px;
-}
-
-.magazine2{
-	width:924px;
-	height:600px;
-	z-index:0;
-}
-
-.magazine2 .page{
-	width:462px;
-	height:600px;
-	background:white;
-
-	-webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);
-	-moz-box-shadow:0 0 20px rgba(0,0,0,0.2);
-	-ms-box-shadow:0 0 20px rgba(0,0,0,0.2);
-	-o-box-shadow:0 0 20px rgba(0,0,0,0.2);
-	box-shadow:0 0 20px rgba(0,0,0,0.2);
-}
-
-.magazine2 .even .gradient{
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	background:-webkit-gradient(linear, left top, right top, color-stop(0.95, rgba(0,0,0,0)), color-stop(1, rgba(0,0,0,0.2)));
-	background-image:-webkit-linear-gradient(left,rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
-	background-image:-moz-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
-	background-image:-ms-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
-	background-image:-o-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
-	background-image:linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
-}
-
-.magazine2 .odd .gradient{
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	background:-webkit-gradient(linear, right top, left top, color-stop(0.95, rgba(0,0,0,0)), color-stop(1, rgba(0,0,0,0.15)));
-	background-image:-webkit-linear-gradient(right,rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
-	background-image:-moz-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
-	background-image:-ms-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
-	background-image:-o-linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
-	background-image:linear-gradient(right, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
-}
-
-.magazine2 .loader{
-	background-image:url(../pics/loader.gif);
-	width:22px;
-	height:22px;
-	position:absolute;
-	top:280px;
-	left:219px;
-}
-
-.sample-magazine2 .zoom-in .even .gradient,
-.sample-magazine2 .zoom-in .odd .gradient{
-	display:none;
-}
-
-.sample-magazine2 .zoom-in .next-button,
-.sample-magazine2 .zoom-in .previous-button{
-	display:none;
-}
-
-.show-bar .magazine2 .shadow{
-	-webkit-transition: -webkit-box-shadow 0.5s;
-	-moz-transition: -moz-box-shadow 0.5s;
-	-o-transition: -webkit-box-shadow 0.5s;
-	-ms-transition: -ms-box-shadow 0.5s;
-
-	-webkit-box-shadow:0 0 20px #ccc;
-	-moz-box-shadow:0 0 20px #ccc;
-	-o-box-shadow:0 0 20px #ccc;
-	-ms-box-shadow:0 0 20px #ccc;
-	box-shadow:0 0 20px #ccc;
-}
-
-.magazine2 .next-button,
-.magazine2 .previous-button{
-	width:22px;
-	height:600px;
-	position:absolute;
-	top:0;
-}
-
-.magazine2 .next-button{
-	right:-22px;
-	-webkit-border-radius:0 15px 15px 0;
-	-moz-border-radius:0 15px 15px 0;
-	-ms-border-radius:0 15px 15px 0;
-	-o-border-radius:0 15px 15px 0;
-	border-radius:0 15px 15px 0;
-}
-
-.magazine2 .previous-button{
-	left:-22px;
-	-webkit-border-radius:15px 0 0 15px;
-	-moz-border-radius:15px 0 0 15px;
-	-ms-border-radius:15px 0 0 15px;
-	-o-border-radius:15px 0 0 15px;
-	border-radius:15px 0 0 15px;
-}
-
-.magazine2 .previous-button-hover,
-.magazine2 .next-button-hover{
-	background-color:rgba(0,0,0, 0.2);
-}
-
-.magazine2 .previous-button-hover,
-.magazine2 .previous-button-down{
-	background-image:url(../pics/arrows.png);
-	background-position:-4px 284px;
-	background-repeat:no-repeat;
-}
-
-.magazine2 .previous-button-down,
-.magazine2 .next-button-down{
-	background-color:rgba(0,0,0, 0.4);
-}
-
-.magazine2 .next-button-hover,
-.magazine2 .next-button-down{
-	background-image:url(../pics/arrows.png);
-	background-position:-38px 284px;
-	background-repeat:no-repeat;
-}
 
 
 
