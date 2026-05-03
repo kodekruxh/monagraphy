@@ -2122,12 +2122,12 @@ blockquote {
   line-height: 22px;
 }
 
-.page-wrapper {
+.page-wrap {
   flex-direction: column;
   display: flex;
 }
 
-.page-wrapper.full {
+.page-wrap.full {
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -3759,7 +3759,7 @@ blockquote {
     border-left-color: var(--linen);
   }
 
-  .page-wrapper {
+  .page-wrap {
     z-index: 1;
     position: relative;
   }
