@@ -2372,7 +2372,7 @@ blockquote {
 .main-image.authord {
   object-fit: cover;
   width: 100%;
-  height: 162px;
+  height: 250px;
 }
 
 .main-image.small {
@@ -2524,7 +2524,7 @@ blockquote {
   color: var(--black);
   flex-direction: column;
   align-items: flex-start;
-  height: 248px;
+  height: 300px;
   text-decoration: none;
   display: flex;
 }
