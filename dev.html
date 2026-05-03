@@ -981,7 +981,7 @@
 
 
 
-
+		<!-- Flipbook Modal -->
 		<div id="flipbookModal" class="flipbook-modal">
 		  <div class="flipbook-container">
 		    <span class="close-btn" onclick="closeFlipbook()">&times;</span>
@@ -1000,6 +1000,23 @@
 		  </div>
 		</div>
 
+		<!-- Preloader Overlay -->
+		<div id="preloader">
+		    <div class="preloader-content">
+		        <a href="/index" class="brand toip w-nav-brand" style="text-decoration: none; color: white;">
+		            <span style="display: flex; align-items: center; justify-content: center;">
+		                <span style="margin-bottom: 5px;">[</span>
+		                <span>MONA</span>
+		                <span style="margin-bottom: 5px;">]</span>
+		                <span style="color: #606060; margin-right: 15px;">GRAPHY</span>
+		                
+		                <!-- This part swaps -->
+		                <span id="word-flipper" style="display: inline-block; min-width: 120px; text-align: left;">MAGAZINE</span>
+		            </span>
+		        </a>
+		    </div>
+		</div>
+
 
 
 
@@ -1013,10 +1030,8 @@
 
 		<script>
 		let flipInitialized = false;
-		
 		function openFlipbook() {
 		  document.getElementById("flipbookModal").style.display = "block";
-		
 		  if (!flipInitialized) {
 		    $("#flipbook").turn({
 		      width: 822,
@@ -1026,10 +1041,44 @@
 		    flipInitialized = true;
 		  }
 		}
-		
 		function closeFlipbook() {
 		  document.getElementById("flipbookModal").style.display = "none";
 		}
+
+
+
+
+
+
+		$(document).ready(function() {
+			const words = ["MAGAZINE", "VISION", "ART", "CULTURE", "MONAGRAPHY"];
+			let i = 0;
+			const $flipper = $("#word-flipper");
+			// 1. Function to cycle the words
+			const wordInterval = setInterval(function() {
+				if (i < words.length - 1) {
+					i++;
+					// Apply a quick fade out/in effect
+					$flipper.fadeOut(100, function() {
+						$(this).text(words[i]).fadeIn(100).addClass('word-change');
+					});
+				} else {
+					clearInterval(wordInterval);
+				}
+			}, 500); // Adjust speed of word switching here (ms)
+			// 2. Lift the curtain when the whole page is ready
+			$(window).on('load', function() {
+				// Delay slightly so the user sees the final logo word
+				setTimeout(function() {
+					$("#preloader").addClass("slide-up");
+					
+					// Clean up the DOM after animation finishes
+					setTimeout(function() {
+						$("#preloader").remove();
+					}, 2000);
+				}, 1200);
+			});
+		});
 		</script>
 
         
