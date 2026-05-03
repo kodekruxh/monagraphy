@@ -1133,29 +1133,35 @@
                 }
                 $book.html("");
         
-                // 3. Build the pages
+                // 3. Build the pages as BACKGROUND IMAGES
                 pages.forEach((src, index) => {
                     const isHard = (index === 0 || index === pages.length - 1) ? "hard" : "";
-                    $book.append(`<div class="${isHard}"><img src="${src}"></div>`);
+                    
+                    // We create a div and set the image as a background
+                    // This prevents the "image dragging" ghost that kills the flip effect
+                    const pageHtml = `
+                        <div class="${isHard}" style="background-image:url(${src}); background-size:100% 100%; background-repeat:no-repeat; background-color:#fff;">
+                        </div>`;
+                        
+                    $book.append(pageHtml);
                 });
-        
-                // 4. THE FIX: Use setTimeout so Turn.js sees the modal is open
+                
+                // 4. Initialize with a slight delay
                 setTimeout(function() {
                     $("#book").turn({
                         width: 800,
                         height: 500,
                         autoCenter: true,
-                        display: 'double', // Crucial for the 2-page spread
+                        display: 'double',
                         acceleration: true,
                         gradients: true,
-                        elevation: 50
+                        elevation: 50,
+                        duration: 1000
                     });
-                
-                    // FORCE the book to jump to page 1 
-                    // This often 'wakes up' the hover listeners
+                    
+                    // Manually trigger a "refresh" of the book
                     $("#book").turn("page", 1);
-                }, 200);
-            }); // <--- THIS WAS THE MISSING BRACKET KILLING YOUR MODAL
+                }, 150);
         
             // Close functionality
             function closeModal() {
