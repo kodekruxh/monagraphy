@@ -1102,41 +1102,74 @@
         <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js@master/turn.min.js"></script>
 
         <script>
-        $(document).ready(function(){
+        $(window).on("load", function(){
         
           const books = {
-            1: ["images/cover-68.jpg", "images/68.jpg", "images/69.jpg", "images/70.jpg", "images/71.jpg", "images/72.jpg"],
+            1: [
+              "images/cover-68.jpg",
+              "images/68.jpg",
+              "images/69.jpg",
+              "images/70.jpg",
+              "images/71.jpg",
+              "images/72.jpg"
+            ]
           };
         
-          $(".openBook").click(function(){
+          $(".openBook").on("click", function(){
         
             let bookId = $(this).data("book");
             let pages = books[bookId];
         
-            $("#book").html(""); // clear old pages
+            if (!pages) return;
         
-            // create pages dynamically
+            // destroy previous instance
+            if ($("#book").data("turn")) {
+              $("#book").turn("destroy");
+            }
+        
+            $("#book").html("");
+        
+            // optional blank page (fixes left-side blank issue)
+            $("#book").append(`<div></div>`);
+        
+            // add images
             pages.forEach(src => {
               $("#book").append(`<div><img src="${src}"></div>`);
             });
         
-            $("#modal").fadeIn();
+            // show modal (flex-safe)
+            $("#modal").addClass("show");
         
-            $("#book").turn({
-              width: 800,
-              height: 500,
-              autoCenter: true
-            });
+            // initialize turn AFTER visible
+            setTimeout(function(){
+              $("#book").turn({
+                width: 800,
+                height: 500,
+                autoCenter: true
+              });
+            }, 50);
         
           });
         
-          $("#close").click(function(){
-            $("#modal").fadeOut();
+          // CLOSE BUTTON
+          $("#close").on("click", function(){
+            closeModal();
+          });
+        
+          // CLICK OUTSIDE
+          $("#modal").on("click", function(e){
+            if (e.target.id === "modal") {
+              closeModal();
+            }
+          });
+        
+          function closeModal(){
+            $("#modal").removeClass("show");
         
             if ($("#book").data("turn")) {
               $("#book").turn("destroy");
             }
-          });
+          }
         
         });
         </script>
