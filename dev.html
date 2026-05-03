@@ -1103,70 +1103,73 @@
 
         <script>
         $(window).on("load", function() {
-            const books = {
-                1: [
-                    "images/cover-68.jpg",
-                    "images/68.jpg",
-                    "images/69.jpg",
-                    "images/70.jpg",
-                    "images/71.jpg",
-                    "images/72.jpg"
-                ]
-            };
         
-            $(".openBook").on("click", function() {
-                let bookId = $(this).data("book");
-                let pages = books[bookId];
-                if (!pages) return;
+          const books = {
+            1: [
+              "images/cover-68.jpg",
+              "images/68.jpg",
+              "images/69.jpg",
+              "images/70.jpg",
+              "images/71.jpg",
+              "images/72.jpg"
+            ]
+          };
         
-                const $book = $("#book");
+          $(".openBook").on("click", function() {
+            const bookId = $(this).data("book");
+            const pages = books[bookId];
         
-                // 1. Show modal first so dimensions exist
-                $("#modal").addClass("show");
+            if (!pages) return;
         
-                // 2. Clear and rebuild
-                if ($book.data("turn")) {
-                    $book.turn("destroy");
-                }
-                $book.html("");
+            // 1. Show the modal container first (required for Turn.js math)
+            $("#modal").addClass("show");
         
-                // 3. Add pages
-                pages.forEach(src => {
-                    $book.append(`<div class="page"><img src="${src}"></div>`);
-                });
-        
-                // 4. Slight delay to let the DOM settle, then init
-                setTimeout(function() {
-                    $book.turn({
-                        width: 800,
-                        height: 500,
-                        autoCenter: true,
-                        display: 'double', // Shows two pages at once
-                        acceleration: true,
-                        gradients: true,
-                        elevation: 50,
-                        when: {
-                            missing: function (event, pages) {
-                                // Helpful for debugging
-                                console.log("Pages missing:", pages);
-                            }
-                        }
-                    });
-                }, 150); // Increased delay for safety
-            });
-        
-            // Close logic
-            function closeModal() {
-                $("#modal").removeClass("show");
-                if ($("#book").data("turn")) {
-                    $("#book").turn("destroy");
-                }
+            // 2. Prepare the book container
+            const $book = $("#book");
+            
+            // Destroy previous instance if it exists
+            if ($book.data("turn")) {
+              $book.turn("destroy").element.html("");
             }
+            $book.html(""); 
         
-            $("#close").on("click", closeModal);
-            $("#modal").on("click", function(e) {
-                if (e.target.id === "modal") closeModal();
+            // 3. Build the pages dynamically
+            pages.forEach((src, index) => {
+              // Add 'hard' class to first and last pages for a realistic feel
+              const isHard = (index === 0 || index === pages.length - 1) ? "hard" : "";
+              $book.append(`<div class="${isHard}"><img src="${src}"></div>`);
             });
+        
+            // 4. Initialize Turn.js AFTER the modal is visible
+            setTimeout(function() {
+              $book.turn({
+                width: 800,
+                height: 500,
+                autoCenter: true,
+                display: 'double',
+                acceleration: true,
+                gradients: true,
+                elevation: 50,
+                duration: 1000 // Speed of the flip
+              });
+            }, 100); // 100ms delay is usually enough for the browser to render the flexbox
+          });
+        
+          // Close functionality
+          function closeModal() {
+            $("#modal").removeClass("show");
+            if ($("#book").data("turn")) {
+              $("#book").turn("destroy");
+            }
+          }
+        
+          $("#close").on("click", closeModal);
+          
+          // Close on background click
+          $("#modal").on("click", function(e) {
+            if (e.target.id === "modal") closeModal();
+          });
+        
         });
         </script>
 
