@@ -2257,6 +2257,21 @@ blockquote {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .hero_image {
   display: flex;
   align-items: center;
@@ -2297,7 +2312,7 @@ blockquote {
 }
 
 .hero_content {
-  padding: 20px;
+  padding: 40px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -2310,7 +2325,8 @@ blockquote {
         margin-top: calc(-80px);
     }
     .hero_content {
-        margin: 20px;
+      padding: 20px
+      margin: 20px;
     }
 }
 
