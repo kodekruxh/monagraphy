@@ -1141,16 +1141,20 @@
         
                 // 4. THE FIX: Use setTimeout so Turn.js sees the modal is open
                 setTimeout(function() {
-                    $book.turn({
+                    $("#book").turn({
                         width: 800,
                         height: 500,
                         autoCenter: true,
-                        display: 'double', // Shows two pages like a book
+                        display: 'double', // Crucial for the 2-page spread
                         acceleration: true,
                         gradients: true,
                         elevation: 50
                     });
-                }, 100); 
+                
+                    // FORCE the book to jump to page 1 
+                    // This often 'wakes up' the hover listeners
+                    $("#book").turn("page", 1);
+                }, 200);
             }); // <--- THIS WAS THE MISSING BRACKET KILLING YOUR MODAL
         
             // Close functionality
