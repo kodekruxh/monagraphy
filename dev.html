@@ -28,6 +28,44 @@
         <script src="https://cdn.lordicon.com/lordicon.js"></script>
         <link href="images/mgm-logo.svg" rel="shortcut icon" type="image/x-icon"/>
         <link href="images/mgm-logo.svg" rel="apple-touch-icon"/>
+
+		<style>
+		#preloader {
+		    position: fixed;
+		    inset: 0;
+		    background: #000;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    z-index: 999999; /* Extra high to be safe */
+		    transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+		    will-change: transform; /* Tells the browser to be ready to move */
+		}
+		
+		.word-frame {
+		    height: 1.2em;
+		    overflow: hidden;
+		    line-height: 1.2em;
+		}
+		
+		.word-list-loop {
+		    /* We use a faster time (1.5s) and linear to ensure it starts moving immediately */
+		    animation: roll 2s infinite ease-in-out;
+		}
+		
+		@keyframes roll {
+		    0% { transform: translateY(0); }
+		    20% { transform: translateY(-1.2em); }
+		    40% { transform: translateY(-2.4em); }
+		    60% { transform: translateY(-3.6em); }
+		    80% { transform: translateY(-4.8em); }
+		    100% { transform: translateY(-4.8em); }
+		}
+		
+		.preloader-hidden {
+		    transform: translateY(-100%) !important;
+		}
+		</style>
         
     </head>
 
@@ -36,6 +74,44 @@
 
     
     <body>
+
+		<!-- Preloader Overlay -->
+		<div id="preloader">
+			<div class="preloader-content">
+				<a href="/index" class="brand toip w-nav-brand" style="text-decoration: none; color: white; display: flex; align-items: center;">
+					<span style="display: flex; align-items: center;">
+						<span style="margin-bottom: 5px;">[</span>
+						<span>MONA</span>
+						<span style="margin-bottom: 5px;">]</span>
+						<span style="color: #606060; margin-right: 15px;">GRAPHY</span>
+					</span>
+		
+					<!-- The Rolling Window -->
+					<div class="word-frame">
+						<div id="word-list">
+							<div>MAGAZINE</div>
+							<div>VISION</div>
+							<div>ART</div>
+							<div>CULTURE</div>
+							<div>MAGAZINE</div>
+							<div>VISION</div>
+							<div>ART</div>
+							<div>CULTURE</div>
+							<div>MAGAZINE</div>
+							<div>VISION</div>
+							<div>ART</div>
+							<div>CULTURE</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+
+
+
+
+		
         <div data-w-id="824fe203-de8e-15c2-034b-a1a7b18de918" class="page-wrap">
             <a href="/index" class="brand toip w-nav-brand">
                 <span style="display: flex; align-items: center;"><span style="margin-bottom: 5px;">[</span><span>MONA</span><span style="margin-bottom: 5px;">]</span><span style="color: #606060; margin-right: 15px;">GRAPHY</span><span>MAGAZINE</span></span>
@@ -999,41 +1075,6 @@
 		
 		  </div>
 		</div>
-
-		<!-- Preloader Overlay -->
-		<div id="preloader">
-			<div class="preloader-content">
-				<a href="/index" class="brand toip w-nav-brand" style="text-decoration: none; color: white; display: flex; align-items: center;">
-					<span style="display: flex; align-items: center;">
-						<span style="margin-bottom: 5px;">[</span>
-						<span>MONA</span>
-						<span style="margin-bottom: 5px;">]</span>
-						<span style="color: #606060; margin-right: 15px;">GRAPHY</span>
-					</span>
-		
-					<!-- The Rolling Window -->
-					<div class="word-frame">
-						<div id="word-list">
-							<div>MAGAZINE</div>
-							<div>VISION</div>
-							<div>ART</div>
-							<div>CULTURE</div>
-							<div>MAGAZINE</div>
-							<div>VISION</div>
-							<div>ART</div>
-							<div>CULTURE</div>
-							<div>MAGAZINE</div>
-							<div>VISION</div>
-							<div>ART</div>
-							<div>CULTURE</div>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div>
-
-
-
 
         </div>
 
