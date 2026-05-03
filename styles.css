@@ -2293,68 +2293,109 @@ blockquote {
     }
 }
 
-/* 1. The Modal Overlay */
+/* ============================================================
+   1. MODAL & OVERLAY 
+   ============================================================ */
 .modal {
-  display: none;
+  display: none; /* Hidden by default */
   position: fixed;
   z-index: 999999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.95); /* Deep dark background */
+  
+  /* Flex centering */
   align-items: center;
   justify-content: center;
 }
 
 .modal.show {
-  display: flex;
+  display: flex; /* Triggered by JS */
 }
 
-/* 2. The Container - MUST ALLOW OVERFLOW FOR CURL */
 .modal-content {
-  width: 800px; 
-  height: 500px;
-  position: relative;
-  background: transparent;
-  overflow: visible !important; /* CRITICAL for the page peel visibility */
-}
-
-#close {
-  position: absolute;
-  top: -50px;
-  right: -10px;
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
-}
-
-/* 3. The Book Engine */
-#book {
   width: 800px;
   height: 500px;
-  /* Ensure the book itself doesn't hide the curl shadow */
+  position: relative;
+  background: transparent; /* Let the book stand on its own */
+  
+  /* CRITICAL: Turn.js creates "peels" that move outside the box. 
+     If this is hidden, you won't see the corner curl! */
   overflow: visible !important; 
 }
 
-/* 4. The Pages - Switch to Background Images in JS as discussed */
-#book .turn-page {
-  background-color: white;
-  background-size: 100% 100%;
+/* ============================================================
+   2. THE CLOSE BUTTON
+   ============================================================ */
+#close {
+  position: absolute;
+  top: -50px; /* Positioned above the book */
+  right: -10px;
+  font-size: 45px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 1000;
+  transition: opacity 0.2s;
 }
 
-/* 5. The "Wall" Fixes */
+#close:hover {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   3. TURN.JS BOOK ENGINE
+   ============================================================ */
+#book {
+  width: 800px;
+  height: 500px;
+  margin: 0 auto;
+  /* Required for the "gradients" and shadows to render correctly */
+  overflow: visible !important; 
+}
+
+/* Logic for individual pages injected by Turn.js */
+.turn-page {
+  background-color: #ffffff;
+  background-size: 100% 100% !important; /* Forces image to fit page exactly */
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  /* Optional: gives the pages a slight paper-like shadow */
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* Logic for "Hard" (Cover) pages */
+.hard {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+/* ============================================================
+   4. INTERACTION FIXES (THE "CURL" FIX)
+   ============================================================ */
+
+/* If you use <img> tags inside divs instead of backgrounds, 
+   this prevents them from blocking the turn engine */
 #book img {
   pointer-events: none !important;
   user-select: none !important;
   -webkit-user-drag: none !important;
-  display: block;
   width: 100%;
   height: 100%;
+  display: block;
 }
 
+/* Force the cursor to change when hovering over the "turnable" area */
 .turn-page-wrapper {
-    cursor: pointer !important;
+  cursor: pointer !important;
+}
+
+/* Prevents accidental text selection while flipping pages */
+body.modal-open {
+  overflow: hidden;
+  user-select: none;
 }
 
 .navbar {
