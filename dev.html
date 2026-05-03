@@ -1104,64 +1104,68 @@
         <script>
         $(window).on("load", function() {
         
-          const books = {
-            1: [
-              "images/cover-68.jpg",
-              "images/68.jpg",
-              "images/69.jpg",
-              "images/70.jpg",
-              "images/71.jpg",
-              "images/72.jpg"
-            ]
-          };
+            const books = {
+                1: [
+                    "images/cover-68.jpg",
+                    "images/68.jpg",
+                    "images/69.jpg",
+                    "images/70.jpg",
+                    "images/71.jpg",
+                    "images/72.jpg"
+                ]
+            };
         
-          $(".openBook").on("click", function() {
-            const bookId = $(this).data("book");
-            const pages = books[bookId];
+            $(".openBook").on("click", function() {
+                const bookId = $(this).data("book");
+                const pages = books[bookId];
         
-            if (!pages) return;
+                if (!pages) return;
         
-            // 1. Show the modal container first (required for Turn.js math)
-            $("#modal").addClass("show");
+                // 1. Show the modal
+                $("#modal").addClass("show");
         
-            // 2. Prepare the book container
-            const $book = $("#book");
-            
-            // Destroy previous instance if it exists
-            if ($book.data("turn")) {
-              $book.turn("destroy").element.html("");
+                // 2. Prepare the book container
+                const $book = $("#book");
+        
+                // Destroy previous instance if it exists
+                if ($book.data("turn")) {
+                    $book.turn("destroy").element.html("");
+                }
+                $book.html("");
+        
+                // 3. Build the pages
+                pages.forEach((src, index) => {
+                    const isHard = (index === 0 || index === pages.length - 1) ? "hard" : "";
+                    $book.append(`<div class="${isHard}"><img src="${src}"></div>`);
+                });
+        
+                // 4. THE FIX: Use setTimeout so Turn.js sees the modal is open
+                setTimeout(function() {
+                    $book.turn({
+                        width: 800,
+                        height: 500,
+                        autoCenter: true,
+                        display: 'double', // Shows two pages like a book
+                        acceleration: true,
+                        gradients: true,
+                        elevation: 50
+                    });
+                }, 100); 
+            }); // <--- THIS WAS THE MISSING BRACKET KILLING YOUR MODAL
+        
+            // Close functionality
+            function closeModal() {
+                $("#modal").removeClass("show");
+                if ($("#book").data("turn")) {
+                    $("#book").turn("destroy");
+                }
             }
-            $book.html(""); 
         
-            // 3. Build the pages dynamically
-            pages.forEach((src, index) => {
-              // Add 'hard' class to first and last pages for a realistic feel
-              const isHard = (index === 0 || index === pages.length - 1) ? "hard" : "";
-              $book.append(`<div class="${isHard}"><img src="${src}"></div>`);
+            $("#close").on("click", closeModal);
+        
+            $("#modal").on("click", function(e) {
+                if (e.target.id === "modal") closeModal();
             });
-        
-            // 4. Initialize Turn.js AFTER the modal is visible
-            $("#book").turn({
-                width: 800,
-                height: 500,
-                autoCenter: true
-            });
-
-        
-          // Close functionality
-          function closeModal() {
-            $("#modal").removeClass("show");
-            if ($("#book").data("turn")) {
-              $("#book").turn("destroy");
-            }
-          }
-        
-          $("#close").on("click", closeModal);
-          
-          // Close on background click
-          $("#modal").on("click", function(e) {
-            if (e.target.id === "modal") closeModal();
-          });
         
         });
         </script>
