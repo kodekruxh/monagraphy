@@ -2293,6 +2293,7 @@ blockquote {
     }
 }
 
+/* 1. The Modal Overlay */
 .modal {
   display: none;
   position: fixed;
@@ -2301,7 +2302,7 @@ blockquote {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   align-items: center;
   justify-content: center;
 }
@@ -2310,43 +2311,46 @@ blockquote {
   display: flex;
 }
 
+/* 2. The Container - MUST ALLOW OVERFLOW FOR CURL */
 .modal-content {
-    width: 800px; 
-    height: 500px;
-    margin: auto;
-    position: relative;
-    background: transparent;
+  width: 800px; 
+  height: 500px;
+  position: relative;
+  background: transparent;
+  overflow: visible !important; /* CRITICAL for the page peel visibility */
 }
 
 #close {
   position: absolute;
-  top: -40px;
-  right: 0;
+  top: -50px;
+  right: -10px;
   font-size: 40px;
   color: white;
   cursor: pointer;
-  z-index: 100;
 }
 
+/* 3. The Book Engine */
 #book {
   width: 800px;
   height: 500px;
+  /* Ensure the book itself doesn't hide the curl shadow */
+  overflow: visible !important; 
 }
 
-#book .page {
-  width: 400px;
-  height: 500px;
+/* 4. The Pages - Switch to Background Images in JS as discussed */
+#book .turn-page {
   background-color: white;
-  line-height: 0;
+  background-size: 100% 100%;
 }
 
+/* 5. The "Wall" Fixes */
 #book img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   pointer-events: none !important;
   user-select: none !important;
   -webkit-user-drag: none !important;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .turn-page-wrapper {
