@@ -1121,34 +1121,27 @@
         
                 if (!pages) return;
         
-                // 1. Show the modal
+                // 1. Open Modal
                 $("#modal").addClass("show");
         
-                // 2. Prepare the book container
+                // 2. Setup Book Container
                 const $book = $("#book");
-        
-                // Destroy previous instance if it exists
+                
                 if ($book.data("turn")) {
                     $book.turn("destroy").element.html("");
                 }
                 $book.html("");
         
-                // 3. Build the pages as BACKGROUND IMAGES
+                // 3. Build Pages as Backgrounds
                 pages.forEach((src, index) => {
                     const isHard = (index === 0 || index === pages.length - 1) ? "hard" : "";
-                    
-                    // We create a div and set the image as a background
-                    // This prevents the "image dragging" ghost that kills the flip effect
-                    const pageHtml = `
-                        <div class="${isHard}" style="background-image:url(${src}); background-size:100% 100%; background-repeat:no-repeat; background-color:#fff;">
-                        </div>`;
-                        
+                    const pageHtml = `<div class="${isHard}" style="background-image:url(${src}); background-size:100% 100%; background-repeat:no-repeat; background-color:#fff;"></div>`;
                     $book.append(pageHtml);
                 });
-                
-                // 4. Initialize with a slight delay
+        
+                // 4. Init Turn.js after modal is visible
                 setTimeout(function() {
-                    $("#book").turn({
+                    $book.turn({
                         width: 800,
                         height: 500,
                         autoCenter: true,
@@ -1158,12 +1151,11 @@
                         elevation: 50,
                         duration: 1000
                     });
-                    
-                    // Manually trigger a "refresh" of the book
-                    $("#book").turn("page", 1);
-                }, 150);
+                    $book.turn("page", 1);
+                }, 200); 
+            }); // <--- THIS WAS THE MISSING CLOSURE
         
-            // Close functionality
+            // Close logic
             function closeModal() {
                 $("#modal").removeClass("show");
                 if ($("#book").data("turn")) {
@@ -1172,7 +1164,6 @@
             }
         
             $("#close").on("click", closeModal);
-        
             $("#modal").on("click", function(e) {
                 if (e.target.id === "modal") closeModal();
             });
