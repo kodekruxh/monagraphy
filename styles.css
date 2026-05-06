@@ -2332,6 +2332,7 @@ blockquote {
 }
 
 .hero_content {
+  margin-top: 100px;
   padding: 40px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
