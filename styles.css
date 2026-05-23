@@ -414,7 +414,7 @@ button, [type="button"], [type="reset"] {
 }
 
 .w-form {
-  margin: 0 0 15px;
+  margin: 0px;
 }
 
 .w-form-done {
@@ -3232,11 +3232,10 @@ blockquote {
   background-color: #fff;
   width: 100%;
   max-width: 1200px;
-  padding-top: 25px;
-  padding-bottom: 23px;
+  padding: 0px;
   display: none;
   position: fixed;
-  top: 112px;
+  top: 120px;
 }
 
 .main-search {
@@ -3253,9 +3252,9 @@ blockquote {
   border-bottom-width: 2px;
   height: auto;
   margin-bottom: 0;
-  padding: 0;
+  padding: 15px;
   font-family: Oswald, sans-serif;
-  font-size: 96px;
+  font-size: 25px;
   line-height: 1;
 }
 
