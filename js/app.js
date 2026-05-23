@@ -1,11 +1,3 @@
-/*!
- * Webflow: Front-end site library
- * @license MIT
- * Inline scripts may access the api using an async handler:
- *   var Webflow = Webflow || [];
- *   Webflow.push(readyFunction);
- */
-
 ( () => {
     var X_ = Object.create;
     var rn = Object.defineProperty;
@@ -13185,7 +13177,7 @@ Webflow.require('ix2').init({
                             "selector": ".search-wrapper",
                             "selectorGuids": ["d4c355b2-c7fe-81f5-3618-667912b6c125"]
                         },
-                        "yValue": -200,
+                        "yValue": -300,
                         "xUnit": "PX",
                         "yUnit": "%",
                         "zUnit": "PX"
@@ -13256,7 +13248,7 @@ Webflow.require('ix2').init({
                             "selector": ".search-wrapper",
                             "selectorGuids": ["d4c355b2-c7fe-81f5-3618-667912b6c125"]
                         },
-                        "yValue": -200,
+                        "yValue": -300,
                         "xUnit": "PX",
                         "yUnit": "%",
                         "zUnit": "PX"
