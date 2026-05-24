@@ -103,10 +103,10 @@
     
     <body>
 
-		<!-- Preloader Overlay -->
+        <!-- Preloader Overlay -->
 		<div id="preloader">
 			<div class="preloader-content">
-				<a href="/index" class="brand toip w-nav-brand" style="text-decoration: none; color: white; display: flex; align-items: center;">
+				<a href="/index" class="brand toip w-nav-brand brand-preloader" style="text-decoration: none; color: white; display: flex; align-items: center;">
 					<span style="display: flex; align-items: center;">
 						<span style="margin-bottom: 5px;">[</span>
 						<span>MONA</span>
@@ -127,14 +127,6 @@
 							<div>ENTERTAINMENT</div>
 							<div>LIFESTYLE</div>
 							<div>BUSINESS</div>
-							<div>HEALTH</div>
-							<div>CHRISTIAN EDITION</div>
-							<div>MAGAZINE</div>
-							<div>ENTERTAINMENT</div>
-							<div>LIFESTYLE</div>
-							<div>BUSINESS</div>
-							<div>HEALTH</div>
-							<div>CHRISTIAN EDITION</div>
 						</div>
 					</div>
 				</a>
@@ -1151,16 +1143,33 @@
 		  let modal = document.getElementById(modalId);
 		  let book = $("#" + bookId);
 		  modal.style.display = "block";
+		
+		  // Check if it's a mobile screen (less than 768px wide)
+		  let isMobile = window.innerWidth < 768;
+		
 		  // Initialize only once per flipbook
 		  if (!initializedBooks[bookId]) {
-		    book.turn({
-		      width: 822,
-		      height: 532.5,
-		      autoCenter: true
-		    });
+		    if (isMobile) {
+		      // Mobile settings: Single page layout, scaled to fit typical mobile width
+		      book.turn({
+		        width: 350,          // Half the desktop width (approx) to fit portrait
+		        height: 450,         // Adjusted height for single page ratio
+		        display: "single",   // Shows one page at a time instead of two
+		        autoCenter: true
+		      });
+		    } else {
+		      // Desktop settings: Double page layout (your original settings)
+		      book.turn({
+		        width: 822,
+		        height: 532.5,
+		        display: "double",
+		        autoCenter: true
+		      });
+		    }
 		    initializedBooks[bookId] = true;
 		  }
 		}
+		
 		function closeFlipbook(modalId) {
 		  document.getElementById(modalId).style.display = "none";
 		}
@@ -1173,31 +1182,43 @@
 		$(document).ready(function() {
 		    const $wordList = $("#word-list");
 		    const wordsCount = $("#word-list div").length;
-		    const lineHeight = 1.2; // Should match the CSS height (em)
+		    const lineHeight = 1.2; // Matches your CSS em height
 		    let currentIndex = 0;
+		    let preloaderTriggered = false;
 		
-		    // 1. Rolling Animation
-		    const rollingInterval = setInterval(function() {
-		        if (currentIndex < wordsCount - 1) {
-		            currentIndex++;
-		            // Move the list up by one line height each time
-		            $wordList.css("transform", "translateY(-" + (currentIndex * lineHeight) + "em)");
-		        } else {
-		            clearInterval(rollingInterval);
-		        }
-		    }, 750); // Adjust timing of the roll here
+		    // Function that actually hides the preloader safely
+		    function dismissPreloader() {
+		        if (preloaderTriggered) return; // Prevent running this twice
+		        preloaderTriggered = true;
 		
-		    // 2. Curtain Lift
-		    $(window).on('load', function() {
-		        // Wait a beat after the last word hits
+		        clearInterval(rollingInterval); // Stop any active intervals
+		        
+		        // Add a tiny beat, then slide up
 		        setTimeout(function() {
 		            $("#preloader").addClass("slide-up-curtain");
 		            
 		            // Garbage collection
 		            setTimeout(function() {
 		                $("#preloader").remove();
-		            }, 1500);
-		        }, 1500); 
+		            }, 1600); // Matches your 1.5s CSS transition + buffer
+		        }, 300); 
+		    }
+		
+		    // 1. Rolling Animation
+		    const rollingInterval = setInterval(function() {
+		        if (currentIndex < wordsCount - 1) {
+		            currentIndex++;
+		            $wordList.css("transform", "translateY(-" + (currentIndex * lineHeight) + "em)");
+		        } else {
+		            // Fail-safe: If the words finish cycling and window hasn't loaded, dismiss anyway!
+		            dismissPreloader();
+		        }
+		    }, 400); // Snappy 400ms pace works great for long lists
+		
+		    // 2. Normal Curtain Lift (If page loads before words finish)
+		    $(window).on('load', function() {
+		        // Give the user a moment to see the brand, then dismiss
+		        setTimeout(dismissPreloader, 1000); 
 		    });
 		});
 		</script>
