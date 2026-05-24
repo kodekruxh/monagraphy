@@ -5,10 +5,21 @@
 ## Core Navigation
 - [Home](https://monagraphymagazine.ca/): The main landing page featuring our latest digital issues, curated stories, and featured visual artists.
 
+## Editorial Categories & Verticals
+Monagraphy Magazine is divided into five distinct digital editions, each showcasing unique aspects of culture, faith, and ambition:
+
+- [Entertainment](https://monagraphymagazine.ca/entertainment): Showcases emerging artists, vocalists, designers, and stand-up comedians, with a heavy emphasis on the South Asian and Canadian arts scenes.
+- [Lifestyle](https://monagraphymagazine.ca/lifestyle): Explores daily life, culture, motherhood, and the personal journeys of everyday visionaries.
+- [Business](https://monagraphymagazine.ca/business): Spotlights entrepreneurial grit, innovative startups, and the real stories behind creators building a legacy.
+- [Health](https://monagraphymagazine.ca/health): Focuses on holistic well-being, mental resilience, and health narratives.
+- [Christian Edition](https://monagraphymagazine.ca/christian-edition): A dedicated, faith-centered branch highlighting Gospel testimonies, worship leaders, and purposeful religious art.
+
+## Related Platforms
+- **Life Coach Mona**: A separate but complementary personal development branch offering personalized life coaching, tarot readings, and numerology sessions.
+
 ## About & Mission
 - Monagraphy Magazine is built with an intentional editorial aesthetic and a heart for human storytelling.
 - Our mission is to provide a platform where individuals own their stories, inspire others, and build a lasting legacy through words, art, and ambition.
-- Key themes include: Creative resilience, entrepreneurial grit, unfiltered human experiences, and artistic exploration.
 
 ## Optional Resources
 - [Sitemap](https://monagraphymagazine.ca/sitemap.xml): Machine-readable structure of all published pages.
