@@ -4348,7 +4348,6 @@ blockquote {
   .container {
     padding-left: 20px;
     padding-right: 20px;
-    display: flex;
   }
 
   .container.background-secondary-color {
@@ -4369,7 +4368,7 @@ blockquote {
   }
 
   .main-image.authord {
-    height: 250px;
+    height: 450px;
   }
 
   .column {
@@ -4489,11 +4488,6 @@ blockquote {
 
   .heading-style-h2 {
     font-size: 50px;
-  }
-
-  .align-right {
-    margin-left: 0;
-    margin-right: auto;
   }
 
   .heading-style-h1 {
