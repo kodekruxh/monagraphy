@@ -9,9 +9,49 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Entertainment Page -->
+  <url>
+    <loc>https://monagraphymagazine.ca/entertainment.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Lifestyle Page -->
+  <url>
+    <loc>https://monagraphymagazine.ca/lifestyle.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Business Page -->
+  <url>
+    <loc>https://monagraphymagazine.ca/business.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Health Page -->
+  <url>
+    <loc>https://monagraphymagazine.ca/health.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
   <!-- About Page -->
   <url>
     <loc>https://monagraphymagazine.ca/about.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Christian Edition Page -->
+  <url>
+    <loc>https://monagraphymagazine.ca/christian_edition.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -22,7 +62,7 @@
     <loc>https://monagraphymagazine.ca/contact.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
