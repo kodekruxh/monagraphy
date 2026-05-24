@@ -4368,7 +4368,7 @@ blockquote {
   }
 
   .main-image.authord {
-    height: 450px;
+    height: 489px;
   }
 
   .column {
@@ -4382,12 +4382,6 @@ blockquote {
   .column.blog {
     width: 100%;
     padding-top: 26px;
-  }
-
-  .row.is-mobile-vertical {
-    grid-row-gap: 25px;
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .text-primary-button {
