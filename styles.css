@@ -2995,6 +2995,13 @@ blockquote {
   line-height: 1.5;
 }
 
+.brand-preloader {
+  text-decoration: none; 
+  color: white; 
+  display: flex; 
+  align-items: center;
+}
+
 .brand.toip {
   margin-left: auto;
   margin-right: auto;
