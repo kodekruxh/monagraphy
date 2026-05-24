@@ -537,16 +537,33 @@
 		  let modal = document.getElementById(modalId);
 		  let book = $("#" + bookId);
 		  modal.style.display = "block";
+		
+		  // Check if it's a mobile screen (less than 768px wide)
+		  let isMobile = window.innerWidth < 768;
+		
 		  // Initialize only once per flipbook
 		  if (!initializedBooks[bookId]) {
-		    book.turn({
-		      width: 822,
-		      height: 532.5,
-		      autoCenter: true
-		    });
+		    if (isMobile) {
+		      // Mobile settings: Single page layout, scaled to fit typical mobile width
+		      book.turn({
+		        width: 350,          // Half the desktop width (approx) to fit portrait
+		        height: 450,         // Adjusted height for single page ratio
+		        display: "single",   // Shows one page at a time instead of two
+		        autoCenter: true
+		      });
+		    } else {
+		      // Desktop settings: Double page layout (your original settings)
+		      book.turn({
+		        width: 822,
+		        height: 532.5,
+		        display: "double",
+		        autoCenter: true
+		      });
+		    }
 		    initializedBooks[bookId] = true;
 		  }
 		}
+		
 		function closeFlipbook(modalId) {
 		  document.getElementById(modalId).style.display = "none";
 		}
