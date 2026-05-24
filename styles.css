@@ -2990,7 +2990,7 @@ blockquote {
   z-index: 1;
   float: none;
   font-family: Oswald, sans-serif;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
   line-height: 1.5;
 }
@@ -4607,7 +4607,7 @@ blockquote {
     padding-right: 20px;
   }
 
-    .brand {
+    .brand-preloader {
       font-size: 20px;
   }
 }
