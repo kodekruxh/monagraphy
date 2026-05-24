@@ -557,35 +557,47 @@
 
 
 		$(document).ready(function() {
-		    const $wordList = $("#word-list");
-		    const wordsCount = $("#word-list div").length;
-		    const lineHeight = 1.2; // Should match the CSS height (em)
-		    let currentIndex = 0;
-		
-		    // 1. Rolling Animation
-		    const rollingInterval = setInterval(function() {
-		        if (currentIndex < wordsCount - 1) {
-		            currentIndex++;
-		            // Move the list up by one line height each time
-		            $wordList.css("transform", "translateY(-" + (currentIndex * lineHeight) + "em)");
-		        } else {
-		            clearInterval(rollingInterval);
-		        }
-		    }, 500); // Adjust timing of the roll here
-		
-		    // 2. Curtain Lift
-		    $(window).on('load', function() {
-		        // Wait a beat after the last word hits
-		        setTimeout(function() {
-		            $("#preloader").addClass("slide-up-curtain");
-		            
-		            // Garbage collection
-		            setTimeout(function() {
-		                $("#preloader").remove();
-		            }, 1600);
-		        }, 1500); 
-		    });
-		});
+	    const $wordList = $("#word-list");
+	    const wordsCount = $("#word-list div").length;
+	    const lineHeight = 1.2; // Matches your CSS em height
+	    let currentIndex = 0;
+	    let preloaderTriggered = false;
+	
+	    // Function that actually hides the preloader safely
+	    function dismissPreloader() {
+	        if (preloaderTriggered) return; // Prevent running this twice
+	        preloaderTriggered = true;
+	
+	        clearInterval(rollingInterval); // Stop any active intervals
+	        
+	        // Add a tiny beat, then slide up
+	        setTimeout(function() {
+	            $("#preloader").addClass("slide-up-curtain");
+	            
+	            // Garbage collection
+	            setTimeout(function() {
+	                $("#preloader").remove();
+	            }, 1600); // Matches your 1.5s CSS transition + buffer
+	        }, 300); 
+	    }
+	
+	    // 1. Rolling Animation
+	    const rollingInterval = setInterval(function() {
+	        if (currentIndex < wordsCount - 1) {
+	            currentIndex++;
+	            $wordList.css("transform", "translateY(-" + (currentIndex * lineHeight) + "em)");
+	        } else {
+	            // Fail-safe: If the words finish cycling and window hasn't loaded, dismiss anyway!
+	            dismissPreloader();
+	        }
+	    }, 400); // Snappy 400ms pace works great for long lists
+	
+	    // 2. Normal Curtain Lift (If page loads before words finish)
+	    $(window).on('load', function() {
+	        // Give the user a moment to see the brand, then dismiss
+	        setTimeout(dismissPreloader, 1000); 
+	    });
+	});
 		</script>
 
       
