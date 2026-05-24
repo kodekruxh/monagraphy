@@ -1,0 +1,14 @@
+# Monagraphy Magazine
+
+> A modern, story-driven digital publication and editorial platform celebrating the raw, unfiltered journeys of artists, entrepreneurs, mothers, creators, and everyday visionaries. Focused on narratives of grit, creativity, and resilience.
+
+## Core Navigation
+- [Home](https://monagraphymagazine.ca/): The main landing page featuring our latest digital issues, curated stories, and featured visual artists.
+
+## About & Mission
+- Monagraphy Magazine is built with an intentional editorial aesthetic and a heart for human storytelling.
+- Our mission is to provide a platform where individuals own their stories, inspire others, and build a lasting legacy through words, art, and ambition.
+- Key themes include: Creative resilience, entrepreneurial grit, unfiltered human experiences, and artistic exploration.
+
+## Optional Resources
+- [Sitemap](https://monagraphymagazine.ca/sitemap.xml): Machine-readable structure of all published pages.
