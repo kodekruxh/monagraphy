@@ -2573,7 +2573,7 @@ blockquote {
   color: var(--black);
   border: 1px solid #000;
   padding: 16px 27px;
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
   transition: color .8s;
   position: relative;
@@ -2861,6 +2861,10 @@ blockquote {
   background-color: rgba(0, 0, 0, 0);
   padding: 0;
   position: relative;
+}
+
+.submit-button:hover {
+  color: #ffffff;
 }
 
 .form-block {
