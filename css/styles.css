@@ -3125,10 +3125,6 @@ blockquote {
   display: flex;
 }
 
-.blog-item:first-child {
-  display: none;
-}
-
 .contact-background-image {
   background-image: url("https://monagraphymagazine.ca/images/contact-01.jpg");
   background-position: 50%;
