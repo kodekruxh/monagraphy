@@ -2581,7 +2581,7 @@ blockquote {
 }
 
 .primary-button:hover {
-  color: #fff;
+  color: #ffffff;
 }
 
 .primary-button.align-right {
@@ -2596,6 +2596,10 @@ blockquote {
 .primary-button.form {
   justify-content: center;
   padding: 16px 27px;
+}
+
+.primary-button.form:hover {
+  color: #ffffff;
 }
 
 .primary-button.blog {
@@ -2861,10 +2865,6 @@ blockquote {
   background-color: rgba(0, 0, 0, 0);
   padding: 0;
   position: relative;
-}
-
-.submit-button:hover {
-  color: #ffffff;
 }
 
 .form-block {
