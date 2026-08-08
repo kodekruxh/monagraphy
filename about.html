@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-wf-domain="hablo.webflow.io" data-wf-page="64b53c4fd4242575cd895160" data-wf-site="6486d42bb615abb2a49e3a01" lang="en">
+<html data-wf-domain="hablo.webflow.io" data-wf-page="64b53c4fd4242575cd89515d" data-wf-site="6486d42bb615abb2a49e3a01" lang="en">
     <head>
         <meta charset="utf-8"/>
 		<title>Monagraphy Magazine | Story-Driven Editorial for Creators & Visionaries</title>
@@ -20,18 +20,6 @@
 		<meta name="twitter:title" content="Monagraphy Magazine" />
 		<meta name="twitter:description" content="Showcasing the voices, journeys, and creativity of everyday visionaries through words, art, and ambition." />
 		<meta name="twitter:image" content="https://monagraphymagazine.ca/images/mgm-logo.svg" />
-
-		<script type="application/ld+json">
-		{
-		  "@context": "https://schema.org",
-		  "@type": "Periodical",
-		  "name": "Monagraphy Magazine",
-		  "url": "https://monagraphymagazine.ca/",
-		  "description": "A modern, story-driven publication celebrating the raw, unfiltered journeys of creators and visionaries.",
-		  "genre": "Art, Culture, & Entrepreneurship",
-		  "issn": ""
-		}
-		</script>
 		
 		<link href="css/styles.css" rel="stylesheet" type="text/css"/>
 		
@@ -58,6 +46,11 @@
         <link href="images/mgm-logo.svg" rel="apple-touch-icon"/>
 
 		<style>
+		.active {
+			color: #000000;
+			font-weight: 600;
+		}
+			
 		#preloader {
 		    position: fixed;
 		    inset: 0;
@@ -97,13 +90,45 @@
         
     </head>
 
-
-
-
-    
     <body>
+		
+        <!-- Preloader Overlay -->
+		<div id="preloader">
+			<div class="preloader-content">
+				<a href="/index" class="brand toip w-nav-brand brand-preloader" style="text-decoration: none; color: white; display: flex; align-items: center;">
+					<span style="display: flex; align-items: center;">
+						<span style="margin-bottom: 5px;">[</span>
+						<span>MONA</span>
+						<span style="margin-bottom: 5px;">]</span>
+						<span style="color: #606060; margin-right: 15px;">GRAPHY</span>
+					</span>
+		
+					<!-- The Rolling Window -->
+					<div class="word-frame">
+						<div id="word-list">
+							<div>MAGAZINE</div>
+							<div>ENTERTAINMENT</div>
+							<div>LIFESTYLE</div>
+							<div>BUSINESS</div>
+							<div>HEALTH</div>
+							<div>CHRISTIAN EDITION</div>
+							<div>MAGAZINE</div>
+							<div>ENTERTAINMENT</div>
+							<div>LIFESTYLE</div>
+							<div>BUSINESS</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+
+
+
+
+		
         <div data-w-id="824fe203-de8e-15c2-034b-a1a7b18de918" class="page-wrap">
-            <a href="/index" class="brand toip w-nav-brand">
+            <a href="/" class="brand toip w-nav-brand">
                 <span style="display: flex; align-items: center;"><span style="margin-bottom: 5px;">[</span><span>MONA</span><span style="margin-bottom: 5px;">]</span><span style="color: #606060; margin-right: 15px;">GRAPHY</span><span>MAGAZINE</span></span>
             </a>
             
@@ -160,7 +185,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="/about" class="main-link w-inline-block">
+                            <a href="/about" class="main-link w-inline-block active">
                                 <div class="main-paragraph">About</div>
                                 <div class="main-paragraph absolute">About</div>
                                 <div class="line-link"></div>
@@ -194,6 +219,8 @@
                     <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/64871dab0fed4e3e4dfbc952_background.jpg" alt="" class="image absolute"/>
                 </div>
             </div>
+
+			<div class="spacer"></div>
 
 
 
