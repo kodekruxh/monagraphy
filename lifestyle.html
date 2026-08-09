@@ -544,6 +544,31 @@
 		        setTimeout(dismissPreloader, 1000); 
 		    });
 		});
+
+
+
+		$(document).ready(function () {
+		  const $targets = $('.brand, .search');
+		  const threshold = 50; // Pixels from the top before fading in
+		
+		  // Set opacity to 0 immediately on load via jQuery
+		  $targets.css('opacity', 0);
+		
+		  function handleScroll() {
+		    if ($(window).scrollTop() > threshold) {
+		      // Fade to opacity 1 when scrolled down past threshold
+		      $targets.stop().animate({ opacity: 1 }, 300);
+		    } else {
+		      $targets.stop().animate({ opacity: 0 }, 300);
+		    }
+		  }
+		
+		  // Check position on load
+		  handleScroll();
+		
+		  // Trigger on scroll
+		  $(window).on('scroll', handleScroll);
+		});
 		</script>
 
       
