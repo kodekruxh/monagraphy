@@ -135,7 +135,7 @@
             <div data-w-id="1b82c0f3-192d-9390-4caa-029181f583c2" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
                 <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/64871dab0fed4e3e4dfbc952_background.jpg" alt="" class="image absolute"/>
                 <div class="container background-secondary-color center w-container">
-                    <a href="/" data-w-id="1b82c0f3-192d-9390-4caa-029181f583c5" aria-current="page" class="brand w-nav-brand w--current">
+                    <a href="/" data-w-id="1b82c0f3-192d-9390-4caa-029181f583c5" aria-current="page" class="brand w-nav-brand w--current logo-small">
                         <span style="display: flex; align-items: center;"><span style="margin-bottom: 5px;">[</span><span>M</span><span style="margin-bottom: 5px;">]</span><span>G</span></span>
                     </a>
 
@@ -534,6 +534,31 @@
 		        // Give the user a moment to see the brand, then dismiss
 		        setTimeout(dismissPreloader, 1000); 
 		    });
+		});
+
+
+
+		$(document).ready(function () {
+		  const $targets = $('.brand, .search');
+		  const threshold = 50; // Pixels from the top before fading in
+		
+		  // Set opacity to 0 immediately on load via jQuery
+		  $targets.css('opacity', 0);
+		
+		  function handleScroll() {
+		    if ($(window).scrollTop() > threshold) {
+		      // Fade to opacity 1 when scrolled down past threshold
+		      $targets.stop().animate({ opacity: 1 }, 300);
+		    } else {
+		      $targets.stop().animate({ opacity: 0 }, 300);
+		    }
+		  }
+		
+		  // Check position on load
+		  handleScroll();
+		
+		  // Trigger on scroll
+		  $(window).on('scroll', handleScroll);
 		});
 		</script>
 
