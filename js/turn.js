@@ -1,4 +1,4 @@
-
+/* turn.js 4.1.0 | Copyright (c) 2012 Emmanuel Garcia | turnjs.com | turnjs.com/license.txt */
 
 (function(f) {
     function I(a, b, c) {
