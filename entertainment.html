@@ -1184,28 +1184,29 @@
 
 
 
-		$(document).ready(function () {
-		  const $targets = $('.logo-small, .search');
-		  const threshold = 50; // Pixels from the top before fading in
-		
-		  // Set opacity to 0 immediately on load via jQuery
-		  $targets.css('opacity', 0);
-		
-		  function handleScroll() {
-		    if ($(window).scrollTop() > threshold) {
-		      // Fade to opacity 1 when scrolled down past threshold
-		      $targets.stop().animate({ opacity: 1 }, 300);
-		    } else {
-		      $targets.stop().animate({ opacity: 0 }, 300);
-		    }
-		  }
-		
-		  // Check position on load
-		  handleScroll();
-		
-		  // Trigger on scroll
-		  $(window).on('scroll', handleScroll);
-		});
+        $(document).ready(function () {
+        const $targets = $('.logo-small, .search');
+        const threshold = 50;
+        const minWidth = 992; // Desktop breakpoint in pixels
+
+        function handleScroll() {
+            if ($(window).width() >= minWidth) {
+            // Desktop: Fade based on scroll position
+            if ($(window).scrollTop() > threshold) {
+                $targets.stop().animate({ opacity: 1 }, 300);
+            } else {
+                $targets.stop().animate({ opacity: 0 }, 300);
+            }
+            } else {
+            // Mobile & Tablet: Force opacity to 1
+            $targets.stop().css('opacity', 1);
+            }
+        }
+
+        // Check on load and on screen resize/scroll
+        handleScroll();
+        $(window).on('scroll resize', handleScroll);
+        });
 		</script>
 
       
