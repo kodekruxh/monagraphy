@@ -553,6 +553,156 @@
 			        setTimeout(dismissPreloader, 1000); 
 			    });
 			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // Contact Form Submission
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx298rNWZ0scWOU4qvWD2ew-tI58rGFSQjXniIsdOYsB0l_NM2yRTPFg9qUOczEnGWF/exec";
+
+            document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.querySelector('.form-block-contact form');
+            if (!contactForm) return;
+
+            contactForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const form = event.target;
+                const submitBtn = form.querySelector('input[type="submit"]');
+                const formWrapper = form.closest('.form-block-contact');
+                const doneDiv = formWrapper.querySelector('.w-form-done');
+                const failDiv = formWrapper.querySelector('.w-form-fail');
+
+                // Reset alert UI state
+                doneDiv.style.display = 'none';
+                failDiv.style.display = 'none';
+
+                // Build payload for Sheet1
+                const payload = {
+                targetSheet: "Sheet1",
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('Message').value
+                };
+
+                // Disable button for 5 minutes (300,000 ms)
+                disableSubmitButton(submitBtn, 5 * 60 * 1000);
+
+                // Send payload
+                fetch(SCRIPT_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: JSON.stringify(payload)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                    doneDiv.style.display = 'block';
+                    form.reset();
+                    } else {
+                    failDiv.style.display = 'block';
+                    }
+                })
+                .catch(err => {
+                    console.error('Contact Form Error:', err);
+                    failDiv.style.display = 'block';
+                });
+            });
+
+            function disableSubmitButton(button, durationMs) {
+                button.disabled = true;
+                const originalValue = button.value;
+                button.value = "Please wait...";
+
+                setTimeout(() => {
+                button.disabled = false;
+                button.value = originalValue;
+                }, durationMs);
+            }
+            });
+
+
+
+
+
+
+
+
+
+
+            // Newsletter Form Submission
+            //const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+
+            document.addEventListener('DOMContentLoaded', () => {
+            const newsletterForm = document.querySelector('#w-node-_3ffc1d31-da4c-0da7-4935-ae86a4d87322-a4d87317 form');
+            if (!newsletterForm) return;
+
+            newsletterForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const form = event.target;
+                const submitBtn = form.querySelector('input[type="submit"]');
+                const formWrapper = form.closest('.form-block');
+                const doneDiv = formWrapper.querySelector('.w-form-done');
+                const failDiv = formWrapper.querySelector('.w-form-fail');
+
+                // Reset alert UI state
+                doneDiv.style.display = 'none';
+                failDiv.style.display = 'none';
+
+                // Build payload for Sheet2
+                const payload = {
+                targetSheet: "Sheet2",
+                email: document.getElementById('email-2').value
+                };
+
+                // Disable button for 5 minutes (300,000 ms)
+                disableSubmitButton(submitBtn, 5 * 60 * 1000);
+
+                // Send payload
+                fetch(SCRIPT_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: JSON.stringify(payload)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                    doneDiv.style.display = 'block';
+                    form.reset();
+                    } else {
+                    failDiv.style.display = 'block';
+                    }
+                })
+                .catch(err => {
+                    console.error('Newsletter Form Error:', err);
+                    failDiv.style.display = 'block';
+                });
+            });
+
+            function disableSubmitButton(button, durationMs) {
+                button.disabled = true;
+                const originalValue = button.value;
+                button.value = "Please wait...";
+
+                setTimeout(() => {
+                button.disabled = false;
+                button.value = originalValue;
+                }, durationMs);
+            }
+            });
 			</script>
 
         
