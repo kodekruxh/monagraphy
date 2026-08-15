@@ -3134,10 +3134,17 @@ blockquote {
 
 .contact-background-image {
   background-image: url("https://monagraphymagazine.ca/images/contact-01.jpg");
-  background-position: 50%;
+  background-position: -250px;
   background-size: cover;
   background-attachment: fixed;
   height: 400px;
+}
+
+@media screen and (max-width: 992px) {
+  .contact-background-image {
+    background-size: auto;
+    background-position: -350px;
+  }
 }
 
 .contact-background-image._2 {
