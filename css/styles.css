@@ -2627,6 +2627,25 @@ blockquote {
     }
 }
 
+.about_hero_image {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+  margin-top: -160px;
+  background-image: url(/images/about-hero.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+@media (max-width: 600px) {
+  .about_hero_image {
+    margin-top: -80px;
+  }
+}
 
 
 
@@ -2637,8 +2656,9 @@ blockquote {
 
 
 
-
-
+.active {
+  font-weight: 900;
+}
 
 
 
