@@ -2461,36 +2461,6 @@ blockquote {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .coming-soon {
     text-align: center;
 }
@@ -2533,11 +2503,6 @@ blockquote {
         text-align: center;
     }
 }
-
-
-
-
-
 
 
 
@@ -2677,6 +2642,12 @@ blockquote {
 
 
 
+
+
+
+
+
+/* Modal Overlay */
 .flipbook-modal {
   display: none;
   position: fixed;
@@ -2685,30 +2656,51 @@ blockquote {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
 }
 
+/* Modal Layout & Centering */
 .flipbook-container {
   position: relative;
-  width: 822px;
-  height: 532.5px;
-  margin: 5% auto;
+  width: 95vw;
+  height: 90vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Universal Turn.js Centering Override */
+.flipbook-container > .flipbook {
+  margin: 0 auto !important;
+}
+
+/* Close Button */
 .close-btn {
   position: absolute;
-  top: -30px;
-  right: 0;
-  font-size: 30px;
+  top: 15px;
+  right: 20px;
+  font-size: 36px;
   color: #fff;
   cursor: pointer;
+  z-index: 10000;
+  line-height: 1;
+  user-select: none;
 }
 
+/* Universal Page Styling (Applies to all flipbook pages & Turn.js wrappers) */
+.flipbook .page,
+.flipbook div[style*="background"] {
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+}
 
-
-
-
-
+/* Optional: Cover Page Shadow Effect */
+.flipbook .page.cover {
+  box-shadow: inset 0 0 20px #000;
+}
 
 
 

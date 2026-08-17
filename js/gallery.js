@@ -1,0 +1,87 @@
+const GALLERY_DIR = 'images/gallery/';
+const IMAGE_PREFIX = 'gallery_image_';
+const IMAGE_EXT = '.jpg';
+
+let totalImages = 0;
+let currentIndex = 1;
+
+const modal = document.getElementById('gallery_modal');
+const openBtn = document.getElementById('open_gallery_modal');
+const closeBtn = document.getElementById('gallery_modal_close');
+const imgEl = document.getElementById('gallery_modal_img');
+const prevBtn = document.getElementById('gallery_modal_prev');
+const nextBtn = document.getElementById('gallery_modal_next');
+
+function testImageExists(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+}
+
+// Probes available images on initialization
+async function initGallery() {
+  let count = 0;
+  while (true) {
+    const testUrl = `${GALLERY_DIR}${IMAGE_PREFIX}${count + 1}${IMAGE_EXT}`;
+    const exists = await testImageExists(testUrl);
+    if (!exists) break;
+    count++;
+  }
+  totalImages = count;
+}
+
+function showImage(index) {
+  imgEl.src = `${GALLERY_DIR}${IMAGE_PREFIX}${index}${IMAGE_EXT}`;
+}
+
+// Open modal
+openBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (totalImages > 0) {
+    currentIndex = 1;
+    showImage(currentIndex);
+    modal.classList.add('is-active');
+  } else {
+    console.warn('No images loaded or found matching naming convention.');
+  }
+});
+
+// Close modal function
+function closeModal() {
+  modal.classList.remove('is-active');
+}
+
+closeBtn.addEventListener('click', closeModal);
+
+// Close on backdrop click
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+// Keyboard controls (Arrow keys + Escape)
+document.addEventListener('keydown', (e) => {
+  if (!modal.classList.contains('is-active')) return;
+
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft') prevBtn.click();
+  if (e.key === 'ArrowRight') nextBtn.click();
+});
+
+// Navigation arrows
+prevBtn.addEventListener('click', () => {
+  if (totalImages === 0) return;
+  currentIndex = currentIndex === 1 ? totalImages : currentIndex - 1;
+  showImage(currentIndex);
+});
+
+nextBtn.addEventListener('click', () => {
+  if (totalImages === 0) return;
+  currentIndex = currentIndex === totalImages ? 1 : currentIndex + 1;
+  showImage(currentIndex);
+});
+
+// Run probing on page load
+initGallery();

@@ -492,13 +492,13 @@
 		  <div class="flipbook-container">
 		    <span class="close-btn" onclick="closeFlipbook('aftab_shaikh_flipbookModal')">&times;</span>
 		
-		    <div id="aftab_shaikh_flipbook">
-		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_cover.jpg); background-size: contain; box-shadow: inset 0 0 20px #000;"></div>
-		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_1.jpg); background-size: contain"></div>
-		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_2.jpg); background-size: contain"></div>
-		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_3.jpg); background-size: contain"></div>
-		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_4.jpg); background-size: contain"></div>
-		      <div style="background: url(images/last-page.jpg); background-size: contain"></div>
+		    <div id="aftab_shaikh_flipbook" class="flipbook">
+		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_cover.jpg);" class="page cover"></div>
+		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_1.jpg);" class="page"></div>
+		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_2.jpg);" class="page"></div>
+		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_3.jpg);" class="page"></div>
+		      <div style="background: url(images/aftab_shaikh/aftab_shaikh_4.jpg);" class="page"></div>
+		      <div style="background: url(images/last-page.jpg);" class="page"></div>
 		    </div>
 		
 		  </div>
@@ -511,116 +511,7 @@
 
     <script src="js/turn.js"></script>
 
-		<script>
-		let initializedBooks = {};
-		function openFlipbook(modalId, bookId) {
-		  let modal = document.getElementById(modalId);
-		  let book = $("#" + bookId);
-		  modal.style.display = "block";
-		
-		  // Check if it's a mobile screen (less than 768px wide)
-		  let isMobile = window.innerWidth < 768;
-		
-		  // Initialize only once per flipbook
-		  if (!initializedBooks[bookId]) {
-		    if (isMobile) {
-		      // Mobile settings: Single page layout, scaled to fit typical mobile width
-		      book.turn({
-		        width: 350,          // Half the desktop width (approx) to fit portrait
-		        height: 450,         // Adjusted height for single page ratio
-		        display: "single",   // Shows one page at a time instead of two
-		        autoCenter: true
-		      });
-		    } else {
-		      // Desktop settings: Double page layout (your original settings)
-		      book.turn({
-		        width: 822,
-		        height: 532.5,
-		        display: "double",
-		        autoCenter: true
-		      });
-		    }
-		    initializedBooks[bookId] = true;
-		  }
-		}
-		
-		function closeFlipbook(modalId) {
-		  document.getElementById(modalId).style.display = "none";
-		}
-
-
-
-
-
-
-		$(document).ready(function() {
-		    const $wordList = $("#word-list");
-		    const wordsCount = $("#word-list div").length;
-		    const lineHeight = 1.2; // Matches your CSS em height
-		    let currentIndex = 0;
-		    let preloaderTriggered = false;
-		
-		    // Function that actually hides the preloader safely
-		    function dismissPreloader() {
-		        if (preloaderTriggered) return; // Prevent running this twice
-		        preloaderTriggered = true;
-		
-		        clearInterval(rollingInterval); // Stop any active intervals
-		        
-		        // Add a tiny beat, then slide up
-		        setTimeout(function() {
-		            $("#preloader").addClass("slide-up-curtain");
-		            
-		            // Garbage collection
-		            setTimeout(function() {
-		                $("#preloader").remove();
-		            }, 1600); // Matches your 1.5s CSS transition + buffer
-		        }, 300); 
-		    }
-		
-		    // 1. Rolling Animation
-		    const rollingInterval = setInterval(function() {
-		        if (currentIndex < wordsCount - 1) {
-		            currentIndex++;
-		            $wordList.css("transform", "translateY(-" + (currentIndex * lineHeight) + "em)");
-		        } else {
-		            // Fail-safe: If the words finish cycling and window hasn't loaded, dismiss anyway!
-		            dismissPreloader();
-		        }
-		    }, 400); // Snappy 400ms pace works great for long lists
-		
-		    // 2. Normal Curtain Lift (If page loads before words finish)
-		    $(window).on('load', function() {
-		        // Give the user a moment to see the brand, then dismiss
-		        setTimeout(dismissPreloader, 1000); 
-		    });
-		});
-
-
-
-		$(document).ready(function () {
-		  const $targets = $('.logo-small, .search');
-		  const threshold = 50; // Pixels from the top before fading in
-		
-		  // Set opacity to 0 immediately on load via jQuery
-		  $targets.css('opacity', 0);
-		
-		  function handleScroll() {
-		    if ($(window).scrollTop() > threshold) {
-		      // Fade to opacity 1 when scrolled down past threshold
-		      $targets.stop().animate({ opacity: 1 }, 300);
-		    } else {
-		      $targets.stop().animate({ opacity: 0 }, 300);
-		    }
-		  }
-		
-		  // Check position on load
-		  handleScroll();
-		
-		  // Trigger on scroll
-		  $(window).on('scroll', handleScroll);
-		});
-		</script>
+    <script src="js/custom.js"></script>
 
       
     </body>
