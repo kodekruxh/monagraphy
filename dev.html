@@ -764,7 +764,7 @@
                 <div class="container">
                     <div class="row">
                         <h2 class="slide-from-bottom-0-1">[MONA]GRAPHY GALLERY</h2>
-                        <a data-w-id="386be27b-58ea-e642-29af-281b8c3e64d1" href="#" class="secondary-button align-right slide-from-bottom-0-2 w-inline-block">
+                        <a id="open_gallery_modal" data-w-id="386be27b-58ea-e642-29af-281b8c3e64d1" href="#" class="secondary-button align-right slide-from-bottom-0-2 w-inline-block">
                             <div class="text-primary-button">View More</div>
                             <div class="background-primary-button second"></div>
                         </a>
@@ -805,6 +805,16 @@
                 </div>
                 <div class="spacer"></div>
             </section>
+
+            <!-- Gallery Modal -->
+            <div id="gallery_modal" class="gallery_modal">
+            <button id="gallery_modal_prev" class="gallery_modal_arrow gallery_modal_prev" aria-label="Previous image">&lang;</button>
+            <div class="gallery_modal_container">
+                <img id="gallery_modal_img" src="" alt="Gallery visual" />
+            </div>
+            <button id="gallery_modal_next" class="gallery_modal_arrow gallery_modal_next" aria-label="Next image">&rang;</button>
+            </div>
+
 
 
 
@@ -977,14 +987,6 @@
 
 
 
-            <!-- Gallery Modal -->
-            <div id="gallery_modal" class="gallery_modal">
-            <button id="gallery_modal_prev" class="gallery_modal_arrow gallery_modal_prev" aria-label="Previous image">&lang;</button>
-            <div class="gallery_modal_container">
-                <img id="gallery_modal_img" src="" alt="Gallery visual" />
-            </div>
-            <button id="gallery_modal_next" class="gallery_modal_arrow gallery_modal_next" aria-label="Next image">&rang;</button>
-            </div>
 
 
 

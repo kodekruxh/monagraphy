@@ -2222,6 +2222,112 @@ blockquote {
 
 
 
+
+
+
+
+
+
+
+
+
+.gallery_modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+/* Shown when triggered */
+.gallery_modal.is-active {
+  display: flex;
+}
+
+.gallery_modal_close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 1001;
+}
+
+.gallery_modal_container {
+  max-width: 80vw;
+  max-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery_modal_container img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.gallery_modal_arrow {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: none;
+  font-size: 2.5rem;
+  padding: 15px 25px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  z-index: 1001;
+}
+
+.gallery_modal_arrow:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .coming-soon {
     text-align: center;
 }
