@@ -1025,6 +1025,40 @@
 			
         </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+            // 1. Wait 5 seconds to start
+            setTimeout(() => {
+                const duration = 60 * 1000; // 60 seconds in milliseconds
+                const animationEnd = Date.now() + duration;
+
+                // 2. Loop continuously until 60 seconds elapse
+                (function frame() {
+                // Trigger small bursts across the top of the screen
+                confetti({
+                    particleCount: 2,         // Lower count per frame keeps it smooth like continuous rain
+                    angle: 270,               // 270 degrees points straight down
+                    spread: 360,
+                    startVelocity: 0,         // Starts at zero so gravity gently pulls it down
+                    ticks: 500,               // Keeps particles visible long enough to hit bottom
+                    origin: { 
+                    x: Math.random(),       // Random position across full screen width (0 to 1)
+                    y: -0.1                 // Starts just above top edge of screen
+                    },
+                    colors: ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42']
+                });
+
+                // Continue loop if 60 seconds have not passed
+                if (Date.now() < animationEnd) {
+                    requestAnimationFrame(frame);
+                }
+                })();
+            }, 5000);
+            });
+        </script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
         
         <script src="js/app.js" type="text/javascript"></script>
