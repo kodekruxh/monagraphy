@@ -313,15 +313,15 @@
                         <h1 class="slide-from-bottom-0-2">Our story</h1>
                         <div class="spacer-medium"></div>
                         <p class="slide-from-bottom-0-3">
-                            <strong>[MONA]GRAPHY MAGAZINE is a Canadian publication and creative studio network based in Toronto and Montreal.</strong>
-                            Founded to champion self-expression, the brand operates as both a self-portrait studio experience and a digital storytelling space through its editorial wing, <em>Monologue</em>. <br/>
+                            <strong>[MONA]GRAPHY MAGAZINE is a Canadian publication and creative studio network based in Toronto</strong>
+                            Founded by Mona William Jackson, [Mona]graphy Magazine is a digital and social-media-based publication centered around art, music, culture, faith, and personal storytelling, with operational roots connected to Toronto, Canada. The platform highlights independent artists, musicians, and inspiring personal journeys across borders <br/>
                             ‍<br/>
                             The platform features raw narratives and portraits from emerging Canadian creatives, artists, and visionaries, serving as a hub for unfiltered personal storytelling. 
                             <strong>
                                 <em>Connecting diverse voices across art, fashion, and culture.</em>
                             </strong>
-                            Through visual imagery and personal essays, Monography explores themes of identity, creative growth, and community across Canada's artistic landscape.<br/>
-                            <br/>Rooted in Toronto's creative scene, Monography bridges studio photography and digital journalism to empower individuals to capture and tell their own stories.
+                            Through visual imagery and personal essays, [MONA]GRAPHY explores themes of identity, creative growth, and community across Canada's artistic landscape.<br/>
+                            <br/>Rooted in Toronto's creative scene, [MONA]GRAPHY bridges studio photography and digital journalism to empower individuals to capture and tell their own stories.
                         </p>
                     </div>
                 </div>
@@ -699,50 +699,7 @@
 
 		<script src="js/turn.js"></script>
 
-			<script>
-			$(document).ready(function() {
-			    const $wordList = $("#word-list");
-			    const wordsCount = $("#word-list div").length;
-			    const lineHeight = 1.2; // Matches your CSS em height
-			    let currentIndex = 0;
-			    let preloaderTriggered = false;
-			
-			    // Function that actually hides the preloader safely
-			    function dismissPreloader() {
-			        if (preloaderTriggered) return; // Prevent running this twice
-			        preloaderTriggered = true;
-			
-			        clearInterval(rollingInterval); // Stop any active intervals
-			        
-			        // Add a tiny beat, then slide up
-			        setTimeout(function() {
-			            $("#preloader").addClass("slide-up-curtain");
-			            
-			            // Garbage collection
-			            setTimeout(function() {
-			                $("#preloader").remove();
-			            }, 1600); // Matches your 1.5s CSS transition + buffer
-			        }, 300); 
-			    }
-			
-			    // 1. Rolling Animation
-			    const rollingInterval = setInterval(function() {
-			        if (currentIndex < wordsCount - 1) {
-			            currentIndex++;
-			            $wordList.css("transform", "translateY(-" + (currentIndex * lineHeight) + "em)");
-			        } else {
-			            // Fail-safe: If the words finish cycling and window hasn't loaded, dismiss anyway!
-			            dismissPreloader();
-			        }
-			    }, 400); // Snappy 400ms pace works great for long lists
-			
-			    // 2. Normal Curtain Lift (If page loads before words finish)
-			    $(window).on('load', function() {
-			        // Give the user a moment to see the brand, then dismiss
-			        setTimeout(dismissPreloader, 1000); 
-			    });
-			});
-			</script>
+        <script src="js/custom.js"></script>
         
     </body>
 </html>
