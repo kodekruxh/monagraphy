@@ -95,44 +95,6 @@
 		
         <link href="images/mgm-logo.svg" rel="icon"/>
         <link href="images/mgm-logo.svg" rel="apple-touch-icon"/>
-
-		<style>
-		#preloader {
-		    position: fixed;
-		    inset: 0;
-		    background: #000;
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
-		    z-index: 9999;
-		    transition: transform 1.5s cubic-bezier(0.85, 0, 0.15, 1);
-		}
-		
-		.slide-up-curtain {
-		    transform: translateY(-100%);
-		}
-		
-		/* The "Window" through which you see one word at a time */
-		.word-frame {
-		    height: 1.2em; /* Height of one line */
-		    overflow: hidden;
-		    position: relative;
-		    display: inline-block;
-		    text-align: left;
-		}
-		
-		/* The vertical strip of words */
-		#word-list {
-		    position: relative;
-		    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Smooth sliding */
-		}
-		
-		#word-list div {
-		    height: 1.2em; /* Must match the frame height */
-		    line-height: 1.2em;
-		    white-space: nowrap;
-		}
-		</style>
         
     </head>
 
@@ -167,6 +129,83 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
         
         <script src="js/app.js" type="text/javascript"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+            // 1. Wait 5 seconds to start
+            setTimeout(() => {
+                const duration = 60 * 1000; // 60 seconds in milliseconds
+                const animationEnd = Date.now() + duration;
+
+                // 2. Loop continuously until 60 seconds elapse
+                (function frame() {
+                // Trigger small bursts across the top of the screen
+                confetti({
+                    particleCount: 2,         // Lower count per frame keeps it smooth like continuous rain
+                    angle: 270,               // 270 degrees points straight down
+                    spread: 360,
+                    startVelocity: 0,         // Starts at zero so gravity gently pulls it down
+                    ticks: 500,               // Keeps particles visible long enough to hit bottom
+                    origin: { 
+                    x: Math.random(),       // Random position across full screen width (0 to 1)
+                    y: -0.1                 // Starts just above top edge of screen
+                    },
+                    colors: ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42']
+                });
+
+                // Continue loop if 60 seconds have not passed
+                if (Date.now() < animationEnd) {
+                    requestAnimationFrame(frame);
+                }
+                })();
+            }, 1000);
+            });
+        </script>
+
+		<script>
+		document.addEventListener('DOMContentLoaded', () => {
+		const progressBar = document.querySelector('.progress-bar');
+		const progressText = document.querySelector('.progress-text');
+
+		// --- Configuration ---
+		const TARGET_URL = 'https://monagraphymagazine.com'; // Replace with your target URL
+		const DURATION_MS = 5000;                // Animation duration in milliseconds (3s)
+		const REDIRECT_DELAY_MS = 300;           // Brief pause at 100% before redirecting
+
+		let startTime = null;
+
+		function updateProgress(timestamp) {
+			if (!startTime) startTime = timestamp;
+			const elapsed = timestamp - startTime;
+			
+			// Calculate percentage (clamped between 0 and 100)
+			const progress = Math.min((elapsed / DURATION_MS) * 100, 100);
+			const percentage = Math.floor(progress);
+
+			// Update styles and DOM elements
+			if (progressBar) progressBar.style.width = `${percentage}%`;
+			if (progressText) progressText.textContent = `${percentage}%`;
+
+			if (progress < 100) {
+			requestAnimationFrame(updateProgress);
+			} else {
+			// Redirect when 100% is reached
+			setTimeout(() => {
+				window.location.href = TARGET_URL;
+			}, REDIRECT_DELAY_MS);
+			}
+		}
+
+		// Set initial state to 0%
+		if (progressBar) progressBar.style.width = '0%';
+		if (progressText) progressText.textContent = '0%';
+
+		// Kick off animation
+		requestAnimationFrame(updateProgress);
+		});
+		</script>
 		
     </body>
 
