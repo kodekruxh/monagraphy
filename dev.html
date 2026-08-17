@@ -772,34 +772,34 @@
                     <div class="spacer-x-small"></div>
                     <div class="w-layout-grid instagram-grid">
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64d7-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/64871c7c5b4d5580f7023fe2_bella-composizione-collage-vintage%20(1)%20(1).jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_1.jpg" class="main-image"/>
                         </div>
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64d9-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/64871b6fe4fc3e7d2587d380_28.jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_2.jpg" class="main-image"/>
                         </div>
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64db-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/648719dfefc3a938db5672c8_30.jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_3.jpg" class="main-image"/>
                         </div>
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64dd-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/64871b7a618ad3f15b141d02_32.jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_4.jpg" class="main-image"/>
                         </div>
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64df-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/64871be43b3f995e8d804f0d_beautiful-vintage-collage-composition.jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_5.jpg" class="main-image"/>
                         </div>
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64e1-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/64871bb24839de5cafaf438a_cactus-houseplant-retro-collage-remix-with-ripped-papers%20(1).jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_6.jpg" class="main-image"/>
                         </div>
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64e3-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/64871b8c5b4d5580f700d885_14.jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_7.jpg" class="main-image"/>
                         </div>
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64e5-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/648719edae9ffc13db217adf_25.jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_8.jpg" class="main-image"/>
                         </div>
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64e7-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/648719ff3b3f995e8d7daccd_5.jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_9.jpg" class="main-image"/>
                         </div>
                         <div id="w-node-_386be27b-58ea-e642-29af-281b8c3e64e9-8c3e64cb" class="overflow-hidden view-image">
-                            <img src="https://cdn.prod.website-files.com/6486d42bb615abb2a49e3a01/64871bd05b4d5580f701395d_29.jpg" class="main-image"/>
+                            <img src="images/gallery/gallery_image_10.jpg" class="main-image"/>
                         </div>
                     </div>
                 </div>
@@ -808,11 +808,21 @@
 
             <!-- Gallery Modal -->
             <div id="gallery_modal" class="gallery_modal">
-            <button id="gallery_modal_prev" class="gallery_modal_arrow gallery_modal_prev" aria-label="Previous image">&lang;</button>
+            <button id="gallery_modal_close" class="gallery_modal_close" aria-label="Close modal">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+
+            <button id="gallery_modal_prev" class="gallery_modal_arrow gallery_modal_prev" aria-label="Previous image">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+
             <div class="gallery_modal_container">
                 <img id="gallery_modal_img" src="" alt="Gallery visual" />
             </div>
-            <button id="gallery_modal_next" class="gallery_modal_arrow gallery_modal_next" aria-label="Next image">&rang;</button>
+
+            <button id="gallery_modal_next" class="gallery_modal_arrow gallery_modal_next" aria-label="Next image">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
             </div>
 
 
@@ -985,7 +995,21 @@
             <img src="images/background.jpg" class="image"/>
 
 
-
+            <!-- Event Modal -->
+            <div id="eventModal" class="event-modal-overlay" style="display: none;">
+                <div class="event-modal-card">
+                    <button class="event-modal-close" onclick="eventCloseModal()" aria-label="Close modal">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <img id="modalImage" src="" alt="Event Image" />
+                    <h3 id="modalHeading"></h3>
+                    <p></p>
+                    <p id="modalDescription"></p>
+                </div>
+            </div>
 
 
 
