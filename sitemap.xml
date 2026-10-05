@@ -11,7 +11,7 @@
 
   <!-- About Page -->
   <url>
-    <loc>https://www.monagraphymagazine.ca/about.html</loc>
+    <loc>https://www.monagraphymagazine.ca/about</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -19,7 +19,7 @@
 
   <!-- Entertainment Page -->
   <url>
-    <loc>https://www.monagraphymagazine.ca/entertainment.html</loc>
+    <loc>https://www.monagraphymagazine.ca/entertainment</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -27,7 +27,7 @@
   
   <!-- Lifestyle Page -->
   <url>
-    <loc>https://www.monagraphymagazine.ca/lifestyle.html</loc>
+    <loc>https://www.monagraphymagazine.ca/lifestyle</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -35,7 +35,7 @@
   
   <!-- Business Page -->
   <url>
-    <loc>https://www.monagraphymagazine.ca/business.html</loc>
+    <loc>https://www.monagraphymagazine.ca/business</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -43,7 +43,7 @@
   
   <!-- Health Page -->
   <url>
-    <loc>https://www.monagraphymagazine.ca/health.html</loc>
+    <loc>https://www.monagraphymagazine.ca/health</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -51,7 +51,7 @@
   
   <!-- Christian Edition Page -->
   <url>
-    <loc>https://www.monagraphymagazine.ca/christian_edition.html</loc>
+    <loc>https://www.monagraphymagazine.ca/christian-edition</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -59,7 +59,7 @@
 
   <!-- Contact Page -->
   <url>
-    <loc>https://www.monagraphymagazine.ca/contact.html</loc>
+    <loc>https://www.monagraphymagazine.ca/contact</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
